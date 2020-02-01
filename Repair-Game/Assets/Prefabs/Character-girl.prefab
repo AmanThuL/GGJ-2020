@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637989506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.078, y: 4.53, z: 1.181}
+  m_LocalPosition: {x: -0.732, y: 3.038, z: 1.925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8374530394935541367}
@@ -1371,10 +1371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9f415c3e78d7e4284a36f456b06b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  vfxMagic: {fileID: 0}
-  fireDelayTime: 0
-  magic: {fileID: 0}
+  firePoint: {fileID: 637989506}
+  vfxMagic: {fileID: 3307533495691835481, guid: ff24787c3a2ff1c4ea42f5daab3069cc,
+    type: 3}
+  fireDelayTime: 0.5
+  fireRate: 0.85
+  timeToFire: 0
 --- !u!114 &3549676295598326019
 MonoBehaviour:
   m_ObjectHideFlags: 0
