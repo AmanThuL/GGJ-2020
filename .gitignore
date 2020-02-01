@@ -60,5 +60,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-Repair-Game/Library/CurrentLayout-default.dwlt
-Repair-Game/Library/CurrentLayout-default.dwlt
+
+# Layout
+*.dwlt
+
