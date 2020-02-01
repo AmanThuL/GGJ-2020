@@ -41,7 +41,6 @@ public class Enemy : Vehicle
     // Update is called once per frame
     void Update()
     {
-        Wander();
         base.Update();
     }
 
@@ -66,7 +65,8 @@ public class Enemy : Vehicle
             }
 
             reached = true;
-            velocity *= 0.1f; //Slow down
+            velocity *= 0.35f;
+            if (velocity.magnitude <= 0.1) velocity = velocity.normalized / 1000f;//Slow down
         }
 
         if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
@@ -78,6 +78,8 @@ public class Enemy : Vehicle
             wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
             reached = false;
         }
+
+        Debug.DrawLine(transform.position, wanderDestination, Color.yellow);
     }
 
     public Vector3 Separation()
