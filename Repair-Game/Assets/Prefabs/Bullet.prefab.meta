@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Repair-Game/Assets/Prefabs/Bullet.prefab.meta
 guid: 08a746343985bb843a25d2eb84daa930
 PrefabImporter:
+=======
+guid: 7368e8f66777bfb49a884bd77e5f62c7
+folderAsset: yes
+DefaultImporter:
+>>>>>>> 4dddaef619c3ced3d0010e6d1cd479d1a63a18b7:Repair-Game/Assets/Alfie's Test Assets/Prefabs.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

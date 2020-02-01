@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Repair-Game/Assets/Prefabs/RotateBut.prefab.meta
 guid: 0da0185df8e51904caa11e4ecb0cedeb
 PrefabImporter:
+=======
+guid: 2b94bb1ea2d93eb44abfcceb54f3a588
+folderAsset: yes
+DefaultImporter:
+>>>>>>> 4dddaef619c3ced3d0010e6d1cd479d1a63a18b7:Repair-Game/Assets/Alfie's Test Assets/Test Materials.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

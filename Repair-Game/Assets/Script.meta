@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Repair-Game/Assets/Script.meta
 guid: 6e08ebfd173a9054e8457e1ca5ba5af3
+=======
+guid: bf1d3fea14940e1479ec8be017cb911f
+>>>>>>> 4dddaef619c3ced3d0010e6d1cd479d1a63a18b7:Repair-Game/Assets/Alfie's Test Assets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

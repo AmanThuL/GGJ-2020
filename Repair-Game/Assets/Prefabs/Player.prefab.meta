@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Repair-Game/Assets/Prefabs/Player.prefab.meta
 guid: 8da071ee2a8a23943867cb88abc41300
 PrefabImporter:
+=======
+guid: 8d48ab25e90c27a469ffdadf0171f6f4
+folderAsset: yes
+DefaultImporter:
+>>>>>>> 4dddaef619c3ced3d0010e6d1cd479d1a63a18b7:Repair-Game/Assets/Alfie's Test Assets/Scripts.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
