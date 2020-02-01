@@ -11,6 +11,17 @@ public class Enemy : Vehicle
 
     public float FOV;
     public float attackRadius;
+    public float avoidRadius;
+
+    //Author: Yuan Luo
+    //Wandering
+    public Vector3 wanderDestination;
+    public bool reached;
+    public float wanderRadius;
+    public float wanderRadiusOffset;
+    public float wanderCooldown; //CD time
+    public float wanderCooldownOffset; //CD offset
+    private float wanderTicker; //CD tracker
 
     // Debugging
     //public Material mat1;
@@ -21,27 +32,72 @@ public class Enemy : Vehicle
     void Start()
     {
         base.Start();
+
+        wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
+        wanderTicker = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Wander();
         base.Update();
     }
 
+    //Author: Yuan Luo
+    //Keep finding random positions to go to, after reaching the position, chill for a moment, then go on
+    // ***Does not have keep-in-bound capability***
     public void Wander()
     {
-        // @Alfie implement wander code here
+        //If not at destination, go to destination
+        if (!reached)
+        {
+            GoTo(wanderDestination);
+        }
+
+        //If reached
+        if (Vector3.Distance(wanderDestination, vehiclePosition) < 0.8f && !reached)
+        {
+            //if just reached, start cooldown
+            if (reached == false)
+            {
+                wanderTicker += (wanderCooldown + Random.Range(-wanderCooldownOffset, wanderCooldownOffset));
+            }
+
+            reached = true;
+            velocity *= 0.1f; //Slow down
+        }
+
+        if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
+
+        //if done chilling
+        if (wanderTicker <= 0 && reached == true)
+        {
+            wanderTicker = 0;
+            wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
+            reached = false;
+        }
     }
 
     public Vector3 Separation()
     {
         // TODO
+        return Vector3.zero;
     }
 
     public Vector3 KeepInBounds()
     {
         // TODO
+        return Vector3.zero;
+    }
+
+    //Author: Yuan Luo
+    //Set velocity towards pos with max speed
+    //pos: position to go to
+    public void GoTo(Vector3 pos)
+    {
+        velocity = Vector3.ClampMagnitude((pos - vehiclePosition), speed);
     }
 
     /// <summary>
@@ -108,6 +164,23 @@ public class Enemy : Vehicle
         {
             return transform.right * speed;
         }
+    }
+
+    //<Helper Function>
+    //Auther: Yuan Luo
+    //Get a random position within a circle of the instance
+    //radius: the radius of the circle
+    private Vector3 GetRandomClosePosition(float radius)
+    {
+        Vector3 pos = Vector3.zero;
+
+        pos = transform.position;
+
+        float angle = Random.Range(0, 360f);
+        pos.x += Mathf.Cos(angle) * radius;
+        pos.z += Mathf.Sin(angle) * radius;
+
+        return pos;
     }
 
     /// <summary>
