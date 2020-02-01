@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAlfie : MonoBehaviour
+public abstract class EnemyPhysics : MonoBehaviour
 {
-    
+
+    public Rigidbody rb;
+
     private Vector3 position;
     public Vector3 acceleration;
     public Vector3 direction;
@@ -15,7 +17,7 @@ public abstract class EnemyAlfie : MonoBehaviour
 
     //Wandering
     public Vector3 wanderDestination;
-    public bool reached; 
+    public bool reached;
     public float wanderRadius;
     public float wanderRadiusOffset;
     public float wanderCooldown; //CD time
@@ -37,6 +39,8 @@ public abstract class EnemyAlfie : MonoBehaviour
     {
         position = transform.position;
 
+        rb = gameObject.GetComponent<Rigidbody>();
+
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
     }
@@ -44,22 +48,18 @@ public abstract class EnemyAlfie : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        Wandering();
+
+        position = transform.position;
+        
         Debug.DrawLine(position, wanderDestination, Color.yellow);
-        // The stuff remaining from how we moved vehicles before
-        velocity += acceleration * Time.deltaTime;
-        position += velocity * Time.deltaTime;
 
         // New stuff for this (and the next) unit
-        direction = velocity.normalized;
+        transform.forward = rb.velocity.normalized;
+    }
 
-        //transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg + 90,0);
+    protected void FixedUpdate()
+    {
 
-        // Zero out acceleration so we start fresh each frame
-        acceleration = Vector3.zero;
-
-        // "Draw" the object at its position
-        transform.position = position;
     }
 
     //Author: Yuan Luo
@@ -70,29 +70,29 @@ public abstract class EnemyAlfie : MonoBehaviour
         //If not at destination, go to destination
         if (!reached)
         {
-            GoTo(wanderDestination);
+            RigidGoTo(wanderDestination);
         }
-        
+
         //If reached
-        if (Vector3.Distance(wanderDestination, position) < 0.8f && !reached)
+        if (Vector3.Distance(wanderDestination, rb.position) < 0.8f && !reached)
         {
             //if just reached, start cooldown
-            if(reached == false)
+            if (reached == false)
             {
-                wanderTicker += (wanderCooldown + Random.Range(-wanderCooldownOffset,wanderCooldownOffset));
+                wanderTicker += (wanderCooldown + Random.Range(-wanderCooldownOffset, wanderCooldownOffset));
             }
-            
+
             reached = true;
-            velocity *= 0.1f; //Slow down
+            rb.velocity *= 0.1f; //Slow down
         }
 
         if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
 
         //if done chilling
-        if(wanderTicker <= 0 && reached == true)
+        if (wanderTicker <= 0 && reached == true)
         {
             wanderTicker = 0;
-            wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset,wanderRadiusOffset));
+            wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
             reached = false;
         }
     }
@@ -102,6 +102,14 @@ public abstract class EnemyAlfie : MonoBehaviour
     public void GoTo(Vector3 pos)
     {
         velocity = Vector3.ClampMagnitude((pos - position), maxSpeed);
+    }
+
+    //Author: Yuan Luo
+    //Add force to rigidbody towards the target position
+    //pos: the target position
+    public void RigidGoTo(Vector3 pos)
+    {
+        rb.AddForce((pos - rb.position) * 0.05f, ForceMode.VelocityChange);
     }
 
     //Auther: Yuan Luo
