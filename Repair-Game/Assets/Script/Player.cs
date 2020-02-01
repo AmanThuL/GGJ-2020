@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         if (coldtimer<=0&&Input.GetKeyDown(KeyCode.S))
         {
             Shoot();
+        
             coldtimer = coldDownTime;
         }
         if (coldtimer <= 0 && Input.GetKeyDown(KeyCode.R))
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     //creact the bullet
     private void Shoot()
     {
+        Debug.Log("shoot");
         Instantiate(bullet, position, Quaternion.identity);
     }
 
