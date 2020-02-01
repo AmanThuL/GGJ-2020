@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Enemy : Vehicle
 {
+    public Rigidbody rb;
+
     public GameObject target;
     public GameObject enemyPrefab;
 
@@ -65,7 +67,7 @@ public class Enemy : Vehicle
             }
 
             reached = true;
-            velocity *= 0.35f;
+            velocity *= 0.15f;
             if (velocity.magnitude <= 0.1) velocity = velocity.normalized / 1000f;//Slow down
         }
 
