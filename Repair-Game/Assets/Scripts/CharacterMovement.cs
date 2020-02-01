@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    static Animator animator;
-    static CharacterController controller;
+    public Animator animator;
+    public CharacterController controller;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxWalkSpeed;
     [SerializeField] private float maxRunSpeed;
     [SerializeField] private float runSpeedBoost;
+    [SerializeField] private bool isRunning;
 
     private float horMovement;
     private float vertMovement;
@@ -31,6 +32,8 @@ public class CharacterMovement : MonoBehaviour
 
         moveDirection = Vector3.zero;
         moveSpeed = maxWalkSpeed;
+
+        isRunning = false;
     }
 
     // Update is called once per frame
@@ -42,16 +45,21 @@ public class CharacterMovement : MonoBehaviour
         vertMovement = Input.GetAxisRaw("Vertical");
 
         // Control speed
-        if (horMovement == 0 && vertMovement == 0) moveSpeed = 0;
-        else moveSpeed = maxRunSpeed;
+        if (!IsThereMovementInput() && !isRunning) moveSpeed = 0;
+        else if (IsWalking()) moveSpeed = maxWalkSpeed;
 
         // Run
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && IsThereMovementInput())
         {
+            if (!isRunning ) isRunning = true;   // set it to true if it's still false
             runSpeedBoost += Time.deltaTime;
             runSpeedBoost = Mathf.Clamp(runSpeedBoost, 1f, maxRunSpeed / maxWalkSpeed);
         }
-        else runSpeedBoost = 1f;
+        else
+        {
+            isRunning = false;
+            runSpeedBoost = 1f;
+        }
 
         Rotate();
         Move();
@@ -79,12 +87,24 @@ public class CharacterMovement : MonoBehaviour
     private void Animate()
     {
         // Animation control
-        animator.SetFloat("forward", moveSpeed / maxWalkSpeed);
+        if (!isRunning)
+            animator.SetFloat("forward", moveSpeed / maxWalkSpeed);
+        else
+            animator.SetFloat("forward", Mathf.Lerp(1, 2, (moveSpeed * runSpeedBoost - maxWalkSpeed) / (maxRunSpeed - maxWalkSpeed)));
     }
 
     // Helper methods
-    private float sqrMagnitude_XZ(Vector3 input)
+    private bool IsThereMovementInput()
     {
-        return Mathf.Sqrt(input.x * input.x + input.z * input.z);
+        if (horMovement == 0 && vertMovement == 0)
+            return false;
+        return true;
+    }
+
+    private bool IsWalking()
+    {
+        if (IsThereMovementInput() && !isRunning)
+            return true;
+        return false;
     }
 }
