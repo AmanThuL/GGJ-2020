@@ -13,4 +13,6 @@ public static class GameStats
     public static int Health = 30;
 
     public static int Level = 1;
+
+    public static int money = 0;
 }
