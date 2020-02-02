@@ -27,12 +27,4 @@ public class Door : MonoBehaviour
             sm.GetComponent<SceneGenerator>().LoadNewScene();
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            
-        }
-    }
 }
