@@ -21,7 +21,7 @@ public class Luobojing2 : Enemy
         state = State.Wander;
         gameObject.GetComponent<SphereCollider>().radius = fov;
         animator = gameObject.GetComponent<Animator>();
-        player = GameObject.Find("Character-girl");
+        player = GameObject.FindWithTag("Player");
         target = player;
         attackTicker += attackCooldown;
     }
@@ -39,18 +39,6 @@ public class Luobojing2 : Enemy
         {
             case State.Wander:
                 Wandering();
-
-                animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
-                transform.forward = rb.velocity.normalized;
-
-                //If player in range and not in cooldown, attack
-                if (Vector3.Distance(player.transform.position, rb.position) < fov && attackTicker <= 0 && reached)
-                {
-                    wanderRadius = 4;
-                    state = State.Attack;
-                }
-
-                attackTicker -= Time.fixedDeltaTime;
 
                 break;
             case State.Attack:
@@ -94,14 +82,9 @@ public class Luobojing2 : Enemy
         attackTicker += attackCooldown;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        return;
-    }
-
     private void OnTriggerStay(Collider other)
     {
-        return;
+        attackTicker -= Time.fixedDeltaTime;
     }
 
     private void OnTriggerExit(Collider other)
