@@ -14,6 +14,8 @@ public class Luobojing : Enemy
 
     public GameObject bullet;
 
+    public ParticleSystem[] particleSystems;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,12 +104,26 @@ public class Luobojing : Enemy
                 break;
             case State.Dead:
                 // Insert dead animation
-                animator.SetTrigger("Death");
-                gameObject.SetActive(false);
+                animator.SetBool("IsDead", true);
+                foreach(ParticleSystem part in particleSystems)
+                {
+                    if (!part.isPlaying)
+                    {
+                        part.Play();
+
+                    }
+                        
+                }
                 break;
         }
 
         //transform.forward = rb.velocity.normalized;
+    }
+
+    private IEnumerator Die()
+    {
+        yield return 0;
+        animator.SetTrigger("IsDead");
     }
 
     public override void Attack()
@@ -123,7 +139,6 @@ public class Luobojing : Enemy
 
     private void AgroWandering()
     {
-        Debug.Log("AGRO");
         //Get a vector towards player
         Vector3 toPlayer = Vector3.ClampMagnitude(player.transform.position - rb.position, wanderRadiusOffset);
 
@@ -143,7 +158,7 @@ public class Luobojing : Enemy
             }
 
             reached = true;
-            rb.velocity *= 0.1f; //Slow down
+            rb.velocity *= 0.2f; //Slow down
         }
 
         if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;

@@ -4941,6 +4941,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   destroyTime: 4
   targetEnemy: {fileID: 0}
+  damage: 5
+  canMove: 0
 --- !u!54 &1118078765
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -106,6 +106,15 @@ public abstract class Enemy : MonoBehaviour
 
     public abstract void Attack();
 
+    public void ReceiveDamage(int damage)
+    {
+        hp -= damage;
+        if(hp <= 0)
+        {
+            state = State.Dead;
+        }
+    }
+
     //Author: Yuan Luo
     //Add force to rigidbody towards the target position
     //pos: the target position
@@ -139,15 +148,15 @@ public abstract class Enemy : MonoBehaviour
         return pos;
     }
 
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
     #region Author: Rachel
     public void Seek(GameObject target)
     {
         RigidGoTo(target.transform.position);
-    }
-
-    public void Die()
-    {
-        gameObject.SetActive(false);
     }
 
     protected void OnTriggerEnter(Collider other)
