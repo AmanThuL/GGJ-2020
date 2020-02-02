@@ -38,8 +38,8 @@ public class Luobojing : EnemyPhysics
     void Update()
     {
         base.Update();
-        
-        
+        animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
+
     }
 
     void FixedUpdate()
@@ -54,7 +54,7 @@ public class Luobojing : EnemyPhysics
             transform.forward = rb.velocity.normalized;
 
             //If player in range and not in cooldown, attack
-            if(Vector3.Distance(player.transform.position, rb.position) < 20f && attackTicker <= 0 && reached)
+            if(Vector3.Distance(player.transform.position, rb.position) < 15f && attackTicker <= 0 && reached)
             {
                 wanderRadius = 4;
                 currentState = state.attack;
@@ -69,12 +69,15 @@ public class Luobojing : EnemyPhysics
 
             Debug.DrawLine(gameObject.transform.position, player.transform.position, Color.yellow);
 
-            rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.05f;
-            animator.SetTrigger("Attack");
+            rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.03f;
             
-            attackTicker = 0;
-            attackTicker += attackCooldown;
-
+            if(attackTicker <= 0 && !isAttacking)
+            {
+                isAttacking = true;
+                animator.SetTrigger("Attack");
+            }
+            
+            
             //currentState = state.wander;
         }
     }
@@ -83,12 +86,11 @@ public class Luobojing : EnemyPhysics
     {
         GameObject obj = Instantiate(bullet, transform.position, Quaternion.identity);
         obj.GetComponent<buuu>().direction = (player.transform.position - transform.position).normalized;
-    }
 
-    private IEnumerator Attack1()
-    {
-        yield return new WaitForSeconds(2f);
-        
+        rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.03f;
+
+        attackTicker = 0;
+        attackTicker += attackCooldown;
     }
 
     public void SetAttackState()
