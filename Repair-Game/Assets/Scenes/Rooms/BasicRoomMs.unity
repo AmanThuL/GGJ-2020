@@ -1273,12 +1273,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61e769ccb938744380473e528838ae7, type: 3}
---- !u!4 &352154405 stripped
+--- !u!4 &352154405
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 8374530394935541367, guid: a61e769ccb938744380473e528838ae7,
     type: 3}
   m_PrefabInstance: {fileID: 352154404}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429118774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2044489918}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364718071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 950f190155555674c88fc0e2e0707692,
@@ -1467,6 +1476,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 5.9, z: 2}
   m_Center: {x: 0, y: -1, z: 0}
+--- !u!1 &429118774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 352154404}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352154405}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &455813281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: be9cba49ad190b743a5dc5a4243ca319,
@@ -2892,7 +2917,7 @@ Transform:
   - {fileID: 771758712}
   - {fileID: 1412316546}
   - {fileID: 523023315}
-  - {fileID: 352154405}
+  - {fileID: 2044489918}
   - {fileID: 1454541618}
   - {fileID: 4043045091534804088}
   - {fileID: 1801394692}
@@ -5518,6 +5543,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2033085735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2044489917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 352154404}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044489918}
+  m_Layer: 0
+  m_Name: Character-girl (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044489918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 352154404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044489917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 352154405}
+  m_Father: {fileID: 916120182}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2062911716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 75971dd0b2ae2ad4b89727078a22e3ad,

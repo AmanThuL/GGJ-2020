@@ -6,24 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Rachel Test Scene.unity
-    guid: cfc5b64bf357af84db6ce067ba68ef80
+    path: Assets/Scenes/Rooms/BasicRoomP.unity
+    guid: bada2c4662000204c993ef2b038cbf87
   - enabled: 1
-    path: Assets/Scenes/Alfie Test Scene.unity
-    guid: ad779435697a21646b5c993a343336c8
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Rooms/BasicRoomMs.unity
+    guid: e56be5da667a14649ae56def1dd4fe96
   - enabled: 1
-    path: Assets/Scenes/Allie Test Scene.unity
-    guid: bf3b1a37691eed94d8e1b3b168242475
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: a774989c5168ff947af1d28ce5d68978
+    path: Assets/Scenes/Rooms/Room_1Plants.unity
+    guid: 394dced50b080184b82eff656c05812a
   - enabled: 1
-    path: Assets/Scenes/Girl Test Scene.unity
-    guid: fe79d8b60d5b7534886bfe4bb0957f8c
+    path: Assets/Scenes/Rooms/Room_2Plants.unity
+    guid: b60a7c32463c1b94686f51b238087853
   - enabled: 1
-    path: Assets/Scenes/Stage.unity
-    guid: 53b0c586f53f75645890ee9285c2ca3d
+    path: Assets/Scenes/Rooms/Room_3Plants.unity
+    guid: 489b8c02812ea934cac17cd1776f6e8b
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_4Plant.unity
+    guid: c9833c545d933cc49ac07590dc836fbe
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_5Mar.unity
+    guid: 221ddb20112e4c14780a051cdf555cd5
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_6Mar.unity
+    guid: e0502853ad8c841419e9bea25a83c168
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_7Mar.unity
+    guid: 85a1a109a92131d4bb945c0203ce9493
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_8Mar.unity
+    guid: 5677a0d2a30ecaa43ab930a34bc525d7
+  - enabled: 1
+    path: Assets/Scenes/TsRoom/Sofa.unity
+    guid: 8b80732cc1bcde14781986a50482c321
+  - enabled: 1
+    path: Assets/Scenes/TsRoom/Starbuk.unity
+    guid: 8529ac45e49f1a44b8586fbe8d0fb8f6
+  - enabled: 1
+    path: Assets/Scenes/TsRoom/waterman.unity
+    guid: b7ad96c9188cfbc43934b4bed798602f
   m_configObjects: {}
