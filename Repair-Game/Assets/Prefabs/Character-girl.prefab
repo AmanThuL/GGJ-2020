@@ -1383,7 +1383,7 @@ MonoBehaviour:
   canFire: 0
   magicAreaAttackKey: 107
   orbFirePoint: {fileID: 5834297822345353870}
-  vfxOrb: {fileID: 857571923562804172, guid: 9a5d597cdb6ac4b4093b2f6e4e5a7e61, type: 3}
+  vfxOrb: {fileID: 857571923562804172, guid: 04f3ade39265cd74884f8fe9e7e46252, type: 3}
   orbFireDelayTime: 1.8
   orbFireRate: 1.5
 --- !u!114 &3549676295598326019
