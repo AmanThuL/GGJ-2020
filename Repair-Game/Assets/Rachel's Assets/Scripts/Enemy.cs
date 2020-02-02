@@ -53,7 +53,7 @@ public abstract class Enemy : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody>();
 
-        floorSize = GameObject.Find("Floor").GetComponent<MeshRenderer>().bounds.extents.x;
+        floorSize = GameObject.Find("Floor").GetComponent<MeshRenderer>().bounds.extents.x * 0.8f;
 
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
@@ -121,7 +121,7 @@ public abstract class Enemy : MonoBehaviour
     //pos: the target position
     public void RigidGoTo(Vector3 pos)
     {
-        rb.AddForce((pos - rb.position) * 0.03f, ForceMode.VelocityChange);
+        rb.AddForce((pos - rb.position) * 0.08f, ForceMode.VelocityChange);
     }
 
     //<Helper function>

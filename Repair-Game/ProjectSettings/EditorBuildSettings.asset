@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms/BasicRoomP.unity
     guid: bada2c4662000204c993ef2b038cbf87
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rooms/BasicRoomMs.unity
     guid: e56be5da667a14649ae56def1dd4fe96
   - enabled: 1
@@ -44,7 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms/Room_8Mar.unity
     guid: 5677a0d2a30ecaa43ab930a34bc525d7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TsRoom/Sofa.unity
     guid: 8b80732cc1bcde14781986a50482c321
   - enabled: 1
