@@ -8,6 +8,11 @@ public class Character : MonoBehaviour
     protected Animator animator;
     protected CharacterController controller;
 
+    public GameObject UIManager;
+    public GameObject sceneFader;
+
+    private GameObject sceneFaderInScene;
+
     public Animator GetAnimator { get => animator; }
 
     // Enemy List
@@ -43,7 +48,10 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(character == null)
+        sceneFaderInScene = Instantiate(sceneFader, Vector3.zero, Quaternion.identity);
+        Instantiate(UIManager, Vector3.zero, Quaternion.identity);
+
+        if (character == null)
         {
             character = this;
         }
@@ -69,6 +77,19 @@ public class Character : MonoBehaviour
         {
             StartCoroutine(MagicAreaAttack());
         }
+
+        if (GameStats.Health <= 0)
+        {
+            StartCoroutine(Die());
+        }
+    }
+
+    private IEnumerator Die()
+    {
+        animator.SetTrigger("dead");
+        yield return new WaitForSeconds(0.5f);
+        sceneFaderInScene.SetActive(true);
+        sceneFaderInScene.GetComponent<SceneFader>().FadeTo("Stage");    
     }
 
     private IEnumerator MagicAttack()
