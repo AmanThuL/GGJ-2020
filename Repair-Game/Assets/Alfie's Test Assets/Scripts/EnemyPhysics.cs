@@ -13,7 +13,6 @@ public abstract class EnemyPhysics : MonoBehaviour
     public Vector3 velocity;
 
     public Vector3 forward;
-    public Vector3 right;
 
     //Wandering
     public Vector3 wanderDestination;
@@ -68,7 +67,7 @@ protected void Update()
 
     protected void FixedUpdate()
     {
-        Wandering();
+
     }
 
     //Author: Yuan Luo

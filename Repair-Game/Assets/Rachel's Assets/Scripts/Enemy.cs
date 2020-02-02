@@ -41,7 +41,10 @@ public abstract class Enemy : MonoBehaviour
     public float hp;
     public float attack;
     public State state;
+    public bool isAttacking;
 
+    //World
+    public float floorSize;
     protected GameObject target;
 
     // Start is called before the first frame update
@@ -51,6 +54,8 @@ public abstract class Enemy : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody>();
 
+        floorSize = GameObject.Find("Floor").GetComponent<MeshRenderer>().bounds.extents.x;
+
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
     }
@@ -58,7 +63,12 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        Debug.DrawLine(transform.position, wanderDestination, Color.yellow);
+    }
 
+    protected void FixedUpdate()
+    {
+        
     }
 
     //Author: Yuan Luo
@@ -96,14 +106,14 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    // public abstract void Attack();
+    public abstract void Attack();
 
     //Author: Yuan Luo
     //Add force to rigidbody towards the target position
     //pos: the target position
     public void RigidGoTo(Vector3 pos)
     {
-        rb.AddForce((pos - rb.position) * 0.05f, ForceMode.VelocityChange);
+        rb.AddForce((pos - rb.position) * 0.03f, ForceMode.VelocityChange);
     }
 
     //<Helper function>
@@ -120,6 +130,14 @@ public abstract class Enemy : MonoBehaviour
         pos.x += Mathf.Cos(angle) * radius;
         pos.z += Mathf.Sin(angle) * radius;
 
+        while (Vector3.Distance(pos, Vector3.zero) > floorSize)
+        {
+            pos = transform.position;
+            angle = Random.Range(0, 360f);
+            pos.x += Mathf.Cos(angle) * radius;
+            pos.z += Mathf.Sin(angle) * radius;
+        }
+
         return pos;
     }
 
@@ -129,7 +147,7 @@ public abstract class Enemy : MonoBehaviour
         RigidGoTo(target.transform.position);
     }
 
-    void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -145,7 +163,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (state == State.Wander && other.gameObject.tag == "Player")
         {
@@ -153,7 +171,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         state = State.Pursuit;
     }
