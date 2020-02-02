@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Author: Yuan Luo
-public class Luobojing : EnemyPhysics
+public class Luobojing : Enemy
 {
-    enum state
-    {
-        wander,
-        attack
-    }
 
-    state currentState;
     public Animator animator;
     [SerializeField] private GameObject player;
 
@@ -29,7 +23,7 @@ public class Luobojing : EnemyPhysics
         player = GameObject.Find("Character-girl");
         Debug.Log(player.transform.position.x);
 
-        currentState = state.wander;
+        state = State.Wander;
 
         attackTicker += attackCooldown;
     }
@@ -46,7 +40,7 @@ public class Luobojing : EnemyPhysics
     {
         base.FixedUpdate();
 
-        if (currentState == state.wander)
+        if (state == State.Wander)
         {
             base.Wandering();
 
@@ -56,14 +50,14 @@ public class Luobojing : EnemyPhysics
             //If player in range and not in cooldown, attack
             if(Vector3.Distance(player.transform.position, rb.position) < 15f && attackTicker <= 0 && reached)
             {
-                wanderRadius = 4;
-                currentState = state.attack;
+                wanderRadius = 5;
+                state = State.Attack;
             }
             
             attackTicker -= Time.fixedDeltaTime;
         }
 
-        if(currentState == state.attack)
+        if(state == State.Attack)
         {
             rb.velocity = Vector3.zero;
 
@@ -85,7 +79,7 @@ public class Luobojing : EnemyPhysics
     public override void Attack()
     {
         GameObject obj = Instantiate(bullet, transform.position, Quaternion.identity);
-        obj.GetComponent<buuu>().direction = (player.transform.position - transform.position).normalized;
+        obj.GetComponent<MonsterBullet>().direction = (player.transform.position - transform.position).normalized;
 
         rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.03f;
 
@@ -95,11 +89,11 @@ public class Luobojing : EnemyPhysics
 
     public void SetAttackState()
     {
-        currentState = state.attack;
+        state = State.Attack;
     }
 
     public void SetWanderState()
     {
-        currentState = state.wander;
+        state = State.Wander;
     }
 }
