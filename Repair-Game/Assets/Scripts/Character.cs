@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
     protected Animator animator;
     protected CharacterController controller;
 
+    public Animator GetAnimator { get => animator; }
+
     // Enemy List
     private GameObject[] enemyList;
     private GameObject target;
 
     [SerializeField] [Range(0, 90)] private float shotAngleTolerance;
+
+    // UI
+    private Image healthUI;
 
     // Magic Attack
     [Header("Magic Attack")]
@@ -39,6 +45,8 @@ public class Character : MonoBehaviour
     {
         character = this;
         canFire = true;
+
+        healthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -96,28 +104,33 @@ public class Character : MonoBehaviour
 
             yield return 0;
 
+
             orb.GetComponent<ProjectileMove>().SetMovable(false);
             yield return new WaitForSeconds(orbFireDelayTime);
-            orb.GetComponent<ProjectileMove>().SetMovable(true);
-            // Set the target enemy for the spawned projectile
-            orb.GetComponent<ProjectileMove>().SetTargetEnemy = FindTargetEnemy();
-            // Enable character movement
-            GetComponent<CharacterMovement>().ToggleInput(true);
+            if (orb != null)
+            {
+                orb.GetComponent<ProjectileMove>().SetMovable(true);
+                // Set the target enemy for the spawned projectile
+                orb.GetComponent<ProjectileMove>().SetTargetEnemy = FindTargetEnemy();
+                // Enable character movement
+                GetComponent<CharacterMovement>().ToggleInput(true);
 
-            yield return new WaitForSeconds(orbFireRate);
-            canFire = true;
+                yield return new WaitForSeconds(orbFireRate);
+                canFire = true;
+            }
+            else
+            {
+                // Get damamged by the enemy's bullet when charging
+                // Enable character movement
+                yield return new WaitForSeconds(1.5f);
+                GetComponent<CharacterMovement>().ToggleInput(true);
+                yield return new WaitForSeconds(orbFireRate);
+                canFire = true;
+            }
         }
         else
         {
             Debug.Log("No Orb Fire Point!");
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "EnemyBullet")
-        {
-            animator.SetTrigger("damaged");
         }
     }
 
@@ -161,5 +174,15 @@ public class Character : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -shotAngleTolerance / 2f, 0) * transform.forward * 50);
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, shotAngleTolerance / 2f, 0) * transform.forward * 50);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        GameStats.Health -= damage;
+
+        Debug.Log("I take a damage of " + damage);
+
+        // Update UI
+        healthUI.fillAmount = (float)GameStats.Health / (float)GameStats.MaxHealth;
     }
 }
