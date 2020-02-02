@@ -11,7 +11,7 @@ public class SceneGenerator : MonoBehaviour
     private ArrayList roomArray;
     private ArrayList tRoomArray;
     public GameObject playerPrefab;
-    public GameObject player;
+    public static GameObject player;
 
     public Vector3 spawnPos;
 

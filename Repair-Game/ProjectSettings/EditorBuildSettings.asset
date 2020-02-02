@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms/Room_8Mar.unity
     guid: 5677a0d2a30ecaa43ab930a34bc525d7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TsRoom/Sofa.unity
     guid: 8b80732cc1bcde14781986a50482c321
   - enabled: 1
@@ -50,4 +50,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prefabs/TsRoom/waterman.unity
     guid: b7ad96c9188cfbc43934b4bed798602f
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_9Rock1.unity
+    guid: fb5715a42948bf04da9d966a6d1b1dfd
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Room_10Rock.unity
+    guid: 5e1e4e78e4fc66447b4f2db3ec1913ca
+  - enabled: 1
+    path: Assets/Prefabs/TsRoom/sofaR.unity
+    guid: 561b3cee291aa174cae88d51480683d5
   m_configObjects: {}
