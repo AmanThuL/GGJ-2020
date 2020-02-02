@@ -44,10 +44,6 @@ public class BoxMonster : Enemy
         }
         animator.SetFloat("Speed", rb.velocity.magnitude / maxSpeed);
         transform.forward = rb.velocity.normalized;
-
-    public override void Attack()
-    {
-        // TODO
     }
 
     public override void Attack()
