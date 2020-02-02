@@ -120,6 +120,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &195780012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4783692375313534052, guid: a61e769ccb938744380473e528838ae7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3549676296020904826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &195780019
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195780012}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &394034945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,13 +374,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263428238}
-  m_LocalRotation: {x: 0.37514567, y: 0.32089248, z: -0.858266, w: 0.1402612}
+  m_LocalRotation: {x: -0.37214738, y: 0.32138017, z: -0.8595703, w: -0.13914019}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 139, y: 132.78, z: 0}
+  m_LocalEulerAnglesHint: {x: 139, y: 226.82, z: 0}
 --- !u!1001 &1835077512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -777,7 +799,12 @@ PrefabInstance:
     - target: {fileID: 2080790057867751678, guid: a61e769ccb938744380473e528838ae7,
         type: 3}
       propertyPath: magicAttackKey
-      value: 102
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549676295598326029, guid: a61e769ccb938744380473e528838ae7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4783692375313534052, guid: a61e769ccb938744380473e528838ae7,
         type: 3}

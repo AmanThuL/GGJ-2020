@@ -69,6 +69,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyBullet")
+        {
+            animator.SetTrigger("damaged");
+        }
+    }
+
     private GameObject FindTargetEnemy()
     {
         target = null;
