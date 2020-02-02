@@ -4,6 +4,14 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public enum State
+    {
+        Wander,
+        Defensive,
+        Pursuit,
+        Attack,
+        Dead,
+    }
 
     public Rigidbody rb;
 
@@ -26,12 +34,15 @@ public abstract class Enemy : MonoBehaviour
     // Floats
     public float mass;
     public float maxSpeed;
-    public float radius;
+    public float fov;
+    public float attackRadius;
 
     // Stats
     public float hp;
     public float attack;
+    public State state;
 
+    protected GameObject target;
 
     // Start is called before the first frame update
     protected void Start()
@@ -48,17 +59,6 @@ public abstract class Enemy : MonoBehaviour
     protected void Update()
     {
 
-        //position = transform.position;
-        
-        Debug.DrawLine(position, wanderDestination, Color.yellow);
-
-        // New stuff for this (and the next) unit
-        //transform.forward = rb.velocity.normalized;
-    }
-
-    protected void FixedUpdate()
-    {
-        Wandering();
     }
 
     //Author: Yuan Luo
@@ -96,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public abstract void Attack();
+    // public abstract void Attack();
 
     //Author: Yuan Luo
     //Add force to rigidbody towards the target position
@@ -122,4 +122,47 @@ public abstract class Enemy : MonoBehaviour
 
         return pos;
     }
+
+    #region Author: Rachel
+    public void Seek(GameObject target)
+    {
+        RigidGoTo(target.transform.position);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (target == null)
+            {
+                target = other.gameObject;
+                Debug.Log(gameObject.name + " spotted " + target.name);
+            }
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (state == State.Wander && other.gameObject.tag == "Player")
+        {
+            state = State.Defensive;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        state = State.Pursuit;
+    }
+
+    void OnDrawGizmos()
+    {
+        //// FOV range
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(transform.position, FOV);
+
+        // Attack range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+    }
+    #endregion
 }

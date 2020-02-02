@@ -1944,9 +1944,10 @@ GameObject:
   - component: {fileID: 1693396450023214213}
   - component: {fileID: 1693396450023214214}
   - component: {fileID: 4009797754636955752}
+  - component: {fileID: 5596517399239001059}
   m_Layer: 0
-  m_Name: Luobojing
-  m_TagString: Untagged
+  m_Name: Luobojing2
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2036,21 +2037,34 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   forward: {x: 0, y: 0, z: 0}
-  right: {x: 0, y: 0, z: 0}
   wanderDestination: {x: 0, y: 0, z: 0}
   reached: 0
-  wanderRadius: 10
+  wanderRadius: 7
   wanderRadiusOffset: 2
   wanderCooldown: 3
   wanderCooldownOffset: 1
   mass: 0
   maxSpeed: 5
-  radius: 0
-  hp: 0
-  attack: 0
+  fov: 3
+  attackRadius: 10
+  hp: 2
+  attack: 2
+  state: 0
   animator: {fileID: 0}
-  attackCooldown: 5
   bullet: {fileID: 0}
+--- !u!135 &5596517399239001059
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251299041091608080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7318680728927445833
 GameObject:
   m_ObjectHideFlags: 0
