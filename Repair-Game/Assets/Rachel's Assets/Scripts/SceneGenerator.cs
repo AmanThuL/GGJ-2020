@@ -25,6 +25,8 @@ public class SceneGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // For now, you just need to press the space bar to enter a new scene.
+        // This needs to be changed so that when you enter a doorway, a new scene is loaded
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LoadNewScene();
@@ -33,6 +35,9 @@ public class SceneGenerator : MonoBehaviour
 
     void LoadNewScene()
     {
+        // Remove current scene from the list
+        sceneArray.Remove(SceneManager.GetActiveScene().name);
+
         if(sceneArray.Count > 0)
         {
             randomIndex = Random.Range(0, sceneArray.Count);
