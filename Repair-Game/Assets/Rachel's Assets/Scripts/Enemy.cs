@@ -41,6 +41,7 @@ public abstract class Enemy : MonoBehaviour
     public float attack;
     public State state;
     public bool isAttacking;
+    public int avgLoot;
 
     //World
     public float floorSize;
