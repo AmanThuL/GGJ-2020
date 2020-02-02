@@ -43,7 +43,10 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        character = this;
+        if(character == null)
+        {
+            character = this;
+        }
         canFire = true;
 
         healthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
