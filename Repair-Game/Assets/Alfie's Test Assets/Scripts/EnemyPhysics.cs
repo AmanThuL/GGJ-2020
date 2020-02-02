@@ -4,11 +4,6 @@ using UnityEngine;
 
 public abstract class EnemyPhysics : MonoBehaviour
 {
-    protected enum state
-    {
-        wander,
-        attack
-    }
 
     public Rigidbody rb;
 
@@ -64,7 +59,7 @@ public abstract class EnemyPhysics : MonoBehaviour
 
     protected void FixedUpdate()
     {
-
+        Wandering();
     }
 
     //Author: Yuan Luo

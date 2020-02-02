@@ -8,8 +8,11 @@ public class Character : MonoBehaviour
     protected CharacterController controller;
 
     // Magic Attack
-    public Transform firePoint;
-    public GameObject magic;
+    public GameObject firePoint;
+    public GameObject vfxMagic;
+    [SerializeField] private float fireDelayTime;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float timeToFire = 0;
 
     // Singleton
     public static Character character;
@@ -27,8 +30,9 @@ public class Character : MonoBehaviour
         if (animator == null) animator = GetComponent<CharacterMovement>().animator;
         if (controller == null) controller = GetComponent<CharacterMovement>().controller;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.time >= timeToFire)
         {
+            timeToFire = Time.time + 1 / fireRate;
             StartCoroutine(MagicAttack());
         }
     }
@@ -36,9 +40,17 @@ public class Character : MonoBehaviour
 
     private IEnumerator MagicAttack()
     {
-        Debug.Log("Magic!!!");
-        animator.SetTrigger("magicAttack");
-        yield return 0;
+        if (firePoint != null)
+        {
+            Debug.Log("Magic!!!");
+            animator.SetTrigger("magicAttack");
+            yield return new WaitForSeconds(fireDelayTime);
+            GameObject vfx = Instantiate(vfxMagic, firePoint.transform.position, GetCharacter().transform.rotation);
+        }
+        else
+        {
+            Debug.Log("No Fire Point!");
+        }
     }
 
 }
