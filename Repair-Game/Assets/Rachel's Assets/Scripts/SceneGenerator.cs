@@ -7,6 +7,8 @@ public class SceneGenerator : MonoBehaviour
 {
     private int randomIndex;
     private ArrayList sceneArray;
+    public GameObject playerPrefab;
+    public GameObject playerRef;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class SceneGenerator : MonoBehaviour
     {
         // For now, you just need to press the space bar to enter a new scene.
         // This needs to be changed so that when you enter a doorway, a new scene is loaded
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             LoadNewScene();
         }
@@ -41,13 +43,22 @@ public class SceneGenerator : MonoBehaviour
         if(sceneArray.Count > 0)
         {
             randomIndex = Random.Range(0, sceneArray.Count);
-            SceneManager.LoadScene((string)sceneArray[randomIndex], LoadSceneMode.Single);
-            sceneArray.RemoveAt(randomIndex); // Removing scene from the array ensures it gets loaded only once
-            // LoadSceneMode.Single = close current scene and load new scene, so that no scenes overlap
+            string newSceneName = (string)sceneArray[randomIndex];
+            SceneManager.LoadScene(newSceneName, LoadSceneMode.Single); // LoadSceneMode.Single = close current scene and load new scene, so that no scenes overlap
+            DelayedExecution(1f, newSceneName);
         }
         else
         {
             Debug.Log("No more scenes to load!");
         }
+    }
+
+    IEnumerator DelayedExecution(float time, string newSceneName)
+    {
+        yield return new WaitForSeconds(time);
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName)); // Sets new active scene
+        playerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity); // Instantiate player character at the center of the new scene (will change the position once all the level layouts are completed)
+        sceneArray.RemoveAt(randomIndex); // Removing scene from the array ensures it gets loaded only once
     }
 }
