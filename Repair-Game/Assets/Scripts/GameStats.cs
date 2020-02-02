@@ -11,4 +11,6 @@ public static class GameStats
     public static bool IsThereMug = false;
 
     public static int Health = 30;
+
+    public static int Level = 1;
 }

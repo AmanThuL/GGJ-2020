@@ -702,7 +702,7 @@ Animator:
   m_GameObject: {fileID: 2668242952809703270}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e298efebf318bec4b97f1cf3b48c49a2, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1300,8 +1300,8 @@ GameObject:
   - component: {fileID: 3549676295598326019}
   - component: {fileID: 8296172667518420767}
   m_Layer: 0
-  m_Name: Character-girl
-  m_TagString: Untagged
+  m_Name: Character-girl2
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1371,12 +1371,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9f415c3e78d7e4284a36f456b06b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotAngleTolerance: 0
+  magicAttackKey: 0
   firePoint: {fileID: 637989506}
   vfxMagic: {fileID: 3307533495691835481, guid: ff24787c3a2ff1c4ea42f5daab3069cc,
     type: 3}
   fireDelayTime: 0.5
   fireRate: 0.85
-  timeToFire: 0
+  canFire: 0
+  magicAreaAttackKey: 0
+  orbFirePoint: {fileID: 0}
+  vfxOrb: {fileID: 0}
+  orbFireDelayTime: 0
+  orbFireRate: 0
 --- !u!114 &3549676295598326019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1406,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   forward: {x: 0, y: 0, z: 0}
   gravityScale: 1
+  isInputEnabled: 0
 --- !u!143 &8296172667518420767
 CharacterController:
   m_ObjectHideFlags: 0
