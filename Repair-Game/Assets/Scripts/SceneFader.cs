@@ -40,7 +40,8 @@ public class SceneFader : MonoBehaviour
 
         Time.timeScale = 1;
 
-        gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().name != "GameT")
+            gameObject.SetActive(false);
     }
 
     IEnumerator FadeOut(string scene)
@@ -55,7 +56,7 @@ public class SceneFader : MonoBehaviour
             yield return 0; // Skip to the next frame
         }
 
-        if (!gameObject.activeSelf) gameObject.SetActive(true);
+        gameObject.SetActive(true);
 
         // Load the scene
         SceneManager.LoadScene(scene);
