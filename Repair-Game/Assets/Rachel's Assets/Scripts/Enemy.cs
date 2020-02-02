@@ -91,7 +91,7 @@ public abstract class Enemy : MonoBehaviour
             }
 
             reached = true;
-            rb.velocity *= 0.1f; //Slow down
+            rb.velocity *= 0.3f; //Slow down
         }
 
         if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
