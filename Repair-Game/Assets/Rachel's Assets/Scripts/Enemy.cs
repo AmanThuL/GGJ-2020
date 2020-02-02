@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
     public float wanderRadiusOffset;
     public float wanderCooldown; //CD time
     public float wanderCooldownOffset; //CD offset
-    private float wanderTicker; //CD tracker
+    protected float wanderTicker; //CD tracker
 
     // Floats
     public float mass;
@@ -81,7 +81,7 @@ public abstract class Enemy : MonoBehaviour
         }
 
         //If reached
-        if (Vector3.Distance(wanderDestination, rb.position) < 0.8f && !reached)
+        if (Vector3.Distance(wanderDestination, rb.position) < 1f && !reached)
         {
             //if just reached, start cooldown
             if (reached == false)
@@ -118,7 +118,7 @@ public abstract class Enemy : MonoBehaviour
     //Auther: Yuan Luo
     //Get a random position within a circle of the instance
     //radius: the radius of the circle
-    private Vector3 GetRandomClosePosition(float radius)
+    protected Vector3 GetRandomClosePosition(float radius)
     {
         Vector3 pos = Vector3.zero;
 

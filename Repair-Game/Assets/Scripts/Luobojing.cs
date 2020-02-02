@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Author: Yuan Luo
-public class Luobojing : Enemy
+public class Luobojing1 : Enemy
 {
 
     public Animator animator;

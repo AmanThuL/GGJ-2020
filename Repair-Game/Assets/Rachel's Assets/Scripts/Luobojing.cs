@@ -29,10 +29,11 @@ public class Luobojing : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
         base.Update();
         animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
 
+        attackTicker -= Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -44,6 +45,8 @@ public class Luobojing : Enemy
         switch (state)
         {
             case State.Wander:
+
+
                 Wandering();
 
                 transform.forward = rb.velocity.normalized;
@@ -51,11 +54,10 @@ public class Luobojing : Enemy
                 //If player in range and not in cooldown, attack
                 if (Vector3.Distance(player.transform.position, rb.position) < fov && attackTicker <= 0 && reached)
                 {
-                    wanderRadius = 4;
+
+                    wanderRadius = 6;
                     state = State.Attack;
                 }
-
-                attackTicker -= Time.fixedDeltaTime;
 
                 break;
             case State.Attack:
@@ -84,7 +86,19 @@ public class Luobojing : Enemy
                 // Slowly back away
                 break;
             case State.Pursuit:
-                Seek(target);
+
+                AgroWandering();
+
+                transform.forward = rb.velocity.normalized;
+
+                //If player in range and not in cooldown, attack
+                if (Vector3.Distance(player.transform.position, rb.position) < fov && attackTicker <= 0 && reached)
+                {
+
+                    wanderRadius = 6;
+                    state = State.Attack;
+                }
+
                 break;
             case State.Dead:
                 // Insert dead animation
@@ -93,7 +107,7 @@ public class Luobojing : Enemy
                 break;
         }
 
-        transform.forward = rb.velocity.normalized;
+        //transform.forward = rb.velocity.normalized;
     }
 
     public override void Attack()
@@ -107,9 +121,50 @@ public class Luobojing : Enemy
         attackTicker += attackCooldown;
     }
 
+    private void AgroWandering()
+    {
+        Debug.Log("AGRO");
+        //Get a vector towards player
+        Vector3 toPlayer = Vector3.ClampMagnitude(player.transform.position - rb.position, wanderRadiusOffset);
+
+        //If not at destination, go to destination
+        if (!reached)
+        {
+            RigidGoTo(wanderDestination + toPlayer);
+        }
+
+        //If reached
+        if (Vector3.Distance(wanderDestination, rb.position) < 1f && !reached)
+        {
+            //if just reached, start cooldown
+            if (reached == false)
+            {
+                wanderTicker += (wanderCooldown + Random.Range(-wanderCooldownOffset, wanderCooldownOffset));
+            }
+
+            reached = true;
+            rb.velocity *= 0.1f; //Slow down
+        }
+
+        if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
+
+        //if done chilling
+        if (wanderTicker <= 0 && reached == true)
+        {
+            wanderTicker = 0;
+            wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset)) + toPlayer;
+            reached = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        return;
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        attackTicker -= Time.fixedDeltaTime;
+        return;
     }
 
     private void OnTriggerExit(Collider other)
