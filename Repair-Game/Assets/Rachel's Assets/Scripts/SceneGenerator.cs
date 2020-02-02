@@ -38,11 +38,11 @@ public class SceneGenerator : MonoBehaviour
         }
 
         // Add scenes here
-        sceneArray.Add("Sofa");
+        sceneArray.Add("sofaR");
         sceneArray.Add("Starbuk");
         sceneArray.Add("waterman");
-        sceneArray.Add("BasicRoomMs");
-        sceneArray.Add("BasicRoomP");
+        //sceneArray.Add("BasicRoomMs");
+        //sceneArray.Add("BasicRoomP");
         sceneArray.Add("Room_1Plants");
         sceneArray.Add("Room_2Plants");
         sceneArray.Add("Room_3Plants");
@@ -51,6 +51,8 @@ public class SceneGenerator : MonoBehaviour
         sceneArray.Add("Room_6Mar");
         sceneArray.Add("Room_7Mar");
         sceneArray.Add("Room_8Mar");
+        sceneArray.Add("Room_9Rock1");
+        sceneArray.Add("Room_10Rock");
     }
 
     // Update is called once per frame
