@@ -96,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    // public abstract void Attack();
+    public abstract void Attack();
 
     //Author: Yuan Luo
     //Add force to rigidbody towards the target position
@@ -133,10 +133,14 @@ public abstract class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (target == null)
+            if (state == State.Wander || target == null)
             {
                 target = other.gameObject;
                 Debug.Log(gameObject.name + " spotted " + target.name);
+            }
+            else if(state == State.Pursuit)
+            {
+                state = State.Attack;
             }
         }
     }

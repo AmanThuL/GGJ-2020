@@ -7,8 +7,6 @@ public class Luobojing2 : Enemy
 {
     public Animator animator;
 
-    public GameObject bullet;
-
     // Start is called before the first frame update
     void Start()
     {
