@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPhysics : MonoBehaviour
+public abstract class EnemyPhysics : MonoBehaviour
 {
     public enum State
     {
@@ -14,7 +14,6 @@ public class EnemyPhysics : MonoBehaviour
     }
 
     public Rigidbody rb;
-    public Animator animator;
 
     private Vector3 position;
     public Vector3 direction;
@@ -51,7 +50,6 @@ public class EnemyPhysics : MonoBehaviour
         position = transform.position;
 
         rb = gameObject.GetComponent<Rigidbody>();
-        animator = gameObject.GetComponent<Animator>();
 
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
@@ -68,9 +66,6 @@ public class EnemyPhysics : MonoBehaviour
 
         // New stuff for this (and the next) unit
         transform.forward = rb.velocity.normalized;
-
-        animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
-
     }
 
     protected void FixedUpdate()
@@ -131,18 +126,17 @@ public class EnemyPhysics : MonoBehaviour
         }
     }
 
-    //Author: Yuan Luo
-    //Set velocity towards pos with max speed
-    public void GoTo(Vector3 pos)
-    {
-        velocity = Vector3.ClampMagnitude((pos - position), maxSpeed);
-    }
+    public abstract void Attack();
 
+    //Author: Yuan Luo
+    //Add force to rigidbody towards the target position
+    //pos: the target position
     public void RigidGoTo(Vector3 pos)
     {
         rb.AddForce((pos - rb.position) * 0.05f, ForceMode.VelocityChange);
     }
 
+    //<Helper function>
     //Auther: Yuan Luo
     //Get a random position within a circle of the instance
     //radius: the radius of the circle
