@@ -37,6 +37,8 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0; // Skip to the next frame
         }
+
+        gameObject.SetActive(false);
     }
 
     IEnumerator FadeOut(string scene)

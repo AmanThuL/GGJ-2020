@@ -42,13 +42,13 @@ public class CameraController : MonoBehaviour
 
         transform.LookAt(target);
     }
-    void OnGUI()
-    {
-        guiStyle.fontSize = 40; //change the font size
-        guiStyle.normal.textColor = Color.white;
-        GUI.Label(new Rect(10, 10, 100, 20), "Use WASD to view the stage", guiStyle);
-        ///////////////////////////
+    //void OnGUI()
+    //{
+    //    guiStyle.fontSize = 40; //change the font size
+    //    guiStyle.normal.textColor = Color.white;
+    //    GUI.Label(new Rect(10, 10, 100, 20), "Use WASD to view the stage", guiStyle);
+    //    ///////////////////////////
 
-    }
+    //}
 
 }
