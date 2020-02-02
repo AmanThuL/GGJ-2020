@@ -9,6 +9,8 @@ public class ProjectileMove : MonoBehaviour
     [SerializeField] private float destroyTime;
     [SerializeField] private GameObject targetEnemy;
 
+    public GameObject SetTargetEnemy { set => targetEnemy = value; }
+
     private float spawnY;
 
     // Start is called before the first frame update
@@ -24,7 +26,7 @@ public class ProjectileMove : MonoBehaviour
     {
         if (speed != 0)
         {
-            velocity = transform.forward * speed;
+            velocity = transform.forward * speed * Time.deltaTime;
             //transform.position += velocity * Time.deltaTime;
 
             if (targetEnemy != null)
@@ -32,9 +34,15 @@ public class ProjectileMove : MonoBehaviour
                 Seek(targetEnemy);
                 transform.position += velocity;
             }
+            else
+            {
+                // Shoot straight when there is no target enemy
+                transform.position += velocity;
+            }
         }
     }
 
+    // Bullet doesn't when colliding with player
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag != "player")

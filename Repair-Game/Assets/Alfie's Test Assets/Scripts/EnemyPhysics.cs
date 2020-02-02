@@ -32,6 +32,10 @@ public abstract class EnemyPhysics : MonoBehaviour
     // Stats
     public float hp;
     public float attack;
+    public bool isAttacking;
+
+    //World
+    public float floorSize;
 
 
     // Start is called before the first frame update
@@ -41,12 +45,17 @@ public abstract class EnemyPhysics : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody>();
 
+        floorSize = GameObject.Find("Floor").GetComponent<MeshRenderer>().bounds.extents.x;
+
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
-    }
 
-    // Update is called once per frame
-    protected void Update()
+        
+
+}
+
+// Update is called once per frame
+protected void Update()
     {
 
         //position = transform.position;
@@ -120,6 +129,14 @@ public abstract class EnemyPhysics : MonoBehaviour
         float angle = Random.Range(0, 360f);
         pos.x += Mathf.Cos(angle) * radius;
         pos.z += Mathf.Sin(angle) * radius;
+
+        while(Vector3.Distance(pos,Vector3.zero) > floorSize)
+        {
+            pos = transform.position;
+            angle = Random.Range(0, 360f);
+            pos.x += Mathf.Cos(angle) * radius;
+            pos.z += Mathf.Sin(angle) * radius;
+        }
 
         return pos;
     }
