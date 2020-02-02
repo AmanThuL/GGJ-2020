@@ -702,7 +702,7 @@ Animator:
   m_GameObject: {fileID: 2668242952809703270}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e298efebf318bec4b97f1cf3b48c49a2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 8296172667518420767}
   m_Layer: 0
   m_Name: Character-girl
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

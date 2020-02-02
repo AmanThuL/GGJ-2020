@@ -3,10 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
   - Wall
   - Enemy
   - Bullet
+=======
+  tags: []
+>>>>>>> parent of 760e795... added enemy pursuit and state enums
   layers:
   - Default
   - TransparentFX
