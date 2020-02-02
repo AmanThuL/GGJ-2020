@@ -134,7 +134,7 @@ public class Luobojing : Enemy
         }
 
         //If reached
-        if (Vector3.Distance(wanderDestination, rb.position) < 0.8f && !reached)
+        if (Vector3.Distance(wanderDestination, rb.position) < 1f && !reached)
         {
             //if just reached, start cooldown
             if (reached == false)
