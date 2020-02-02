@@ -2049,6 +2049,8 @@ MonoBehaviour:
   hp: 0
   attack: 0
   animator: {fileID: 0}
+  attackCooldown: 5
+  bullet: {fileID: 8875160353094889950, guid: 4083e177f6dc5e94c8ab6500473e4982, type: 3}
 --- !u!1 &7318680728927445833
 GameObject:
   m_ObjectHideFlags: 0

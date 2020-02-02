@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         //Allie Zhao
         playerP = player.transform.position;
-        //vel = player.transform.forward;
+        vel = player.transform.forward;
         //vel = new Vector3(1, 0, 1).normalized;
         position = transform.position;
         speed = 5;

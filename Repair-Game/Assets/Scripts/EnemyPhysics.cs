@@ -54,12 +54,12 @@ public abstract class EnemyPhysics : MonoBehaviour
     protected void Update()
     {
 
-        position = transform.position;
+        //position = transform.position;
         
         Debug.DrawLine(position, wanderDestination, Color.yellow);
 
         // New stuff for this (and the next) unit
-        transform.forward = rb.velocity.normalized;
+        //transform.forward = rb.velocity.normalized;
     }
 
     protected void FixedUpdate()
