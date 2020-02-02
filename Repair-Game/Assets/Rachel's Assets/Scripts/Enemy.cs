@@ -138,7 +138,7 @@ public abstract class Enemy : MonoBehaviour
         pos.x += Mathf.Cos(angle) * radius;
         pos.z += Mathf.Sin(angle) * radius;
 
-        while (Vector3.Distance(pos, GameObject.Find("Floor").transform.position) > floorSize)
+        while (Vector3.Distance(pos,  new Vector3(GameObject.Find("Floor").transform.position.x, 0 , GameObject.Find("Floor").transform.position.z)) > floorSize)
         {
             pos = transform.position;
             angle = Random.Range(0, 360f);

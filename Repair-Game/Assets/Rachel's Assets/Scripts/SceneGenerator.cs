@@ -10,53 +10,54 @@ public class SceneGenerator : MonoBehaviour
     private int randomIndex;
     private ArrayList sceneArray;
     public GameObject playerRef;
+    public GameObject player;
 
-    //void Awake()
-    //{
-    //    playerRef = GameObject.FindWithTag("Player");
-    //    if(sceneGenerator == null)
-    //    {
-    //        DontDestroyOnLoad(gameObject);
-    //        sceneGenerator = this;
-    //    }
-    //    if (playerRef == null)
-    //    {
-    //        DontDestroyOnLoad(playerRef);
-    //    }
-    //    //else if(sceneGenerator != this)
-    //    //{
-    //    //    Destroy(gameObject);
-    //    //}
-    //}
+    void Awake()
+    {
+        if(sceneGenerator == null)
+        {
+            sceneGenerator = this;
+            DontDestroyOnLoad(sceneGenerator);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(playerRef.name);
+
         sceneArray = new ArrayList();
+        if (player == null)
+        {
+            player = Instantiate(playerRef, new Vector3(25, 0.5f, 0), Quaternion.identity);
+            DontDestroyOnLoad(player);
+        }
 
         // Add scenes here
-        sceneArray.Add("BasicRoomMs");
-        sceneArray.Add("BasicRoomP");
-        sceneArray.Add("Room_1Plants");
-        sceneArray.Add("Room_2Plants");
-        sceneArray.Add("Room_3Plants");
-        sceneArray.Add("Room_4Plant");
-        sceneArray.Add("Room_5Mar");
-        sceneArray.Add("Room_6Mar");
-        sceneArray.Add("Room_7Mar");
-        sceneArray.Add("Room_8Mar");
+        sceneArray.Add("Sofa");
+        sceneArray.Add("Starbuk");
+        sceneArray.Add("waterman");
+        //sceneArray.Add("BasicRoomMs");
+        //sceneArray.Add("BasicRoomP");
+        //sceneArray.Add("Room_1Plants");
+        //sceneArray.Add("Room_2Plants");
+        //sceneArray.Add("Room_3Plants");
+        //sceneArray.Add("Room_4Plant");
+        //sceneArray.Add("Room_5Mar");
+        //sceneArray.Add("Room_6Mar");
+        //sceneArray.Add("Room_7Mar");
+        //sceneArray.Add("Room_8Mar");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // For now, you just need to press the space bar to enter a new scene.
+        // For now, you just need to press tab to enter a new scene.
         // This needs to be changed so that when you enter a doorway, a new scene is loaded
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             LoadNewScene();
         }
-        Debug.Log(playerRef.name);
         
     }
 
@@ -69,7 +70,7 @@ public class SceneGenerator : MonoBehaviour
         {
             randomIndex = Random.Range(0, sceneArray.Count);
             string newSceneName = (string)sceneArray[randomIndex];
-            SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive); // LoadSceneMode.Additive = load scene over old scene
+            SceneManager.LoadScene(newSceneName, LoadSceneMode.Single); // LoadSceneMode.Single = close previous scene, load new scene | LoadSceneMode.Additive = load scene over old scene
             DelayedExecution(1f, newSceneName);
             SceneManager.MoveGameObjectToScene(playerRef, SceneManager.GetSceneByName(newSceneName));
             sceneArray.RemoveAt(randomIndex); // Removing scene from the array ensures it gets loaded only once
