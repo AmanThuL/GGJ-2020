@@ -27,7 +27,7 @@ public class ExitAttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Luobojing lbj = animator.GetComponentInParent<Luobojing>();
-        lbj.SetWanderState();
+        lbj.SetPursuitState();
         
     }
 
