@@ -5,7 +5,11 @@ using UnityEngine;
 //Author: Yuan Luo
 public class Luobojing : EnemyPhysics
 {
-
+    enum state
+    {
+        wander,
+        attack
+    }
     state currentState;
     public Animator animator;
     private Character player;
