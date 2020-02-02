@@ -27,6 +27,11 @@ public class OnDying : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Luobojing lbj = animator.GetComponentInParent<Luobojing>();
+        for(int i = 0; i < Random.Range(0,lbj.avgLoot); i++)
+        {
+            Instantiate(lbj.coin, lbj.transform.position, Quaternion.identity);
+        }
         animator.GetComponentInParent<Luobojing>().Die();
     }
 

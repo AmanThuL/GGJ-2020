@@ -10,8 +10,8 @@ public class CameraController : MonoBehaviour
     public Transform target;
     public float angle = 142f;
     private float radius = 150f;
+    private GUIStyle guiStyle = new GUIStyle(); //create a new variable
 
-    
 
     // Update is called once per frame
     void Update()
@@ -42,6 +42,13 @@ public class CameraController : MonoBehaviour
 
         transform.LookAt(target);
     }
+    void OnGUI()
+    {
+        guiStyle.fontSize = 40; //change the font size
+        guiStyle.normal.textColor = Color.white;
+        GUI.Label(new Rect(10, 10, 100, 20), "Use WASD to view the stage", guiStyle);
+        ///////////////////////////
 
+    }
 
 }
