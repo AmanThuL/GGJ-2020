@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7751100570721358934
 SkinnedMeshRenderer:
@@ -227,7 +227,7 @@ Transform:
   - {fileID: 8931367933401655268}
   - {fileID: 6136348993743047459}
   m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505831969751917365
 GameObject:
@@ -1393,7 +1393,7 @@ Transform:
   - {fileID: 5324811490533882027}
   - {fileID: 5151346258814584376}
   m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5164693510237000054
 GameObject:
@@ -1660,80 +1660,6 @@ Transform:
   m_Father: {fileID: 6124967206808718981}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5327153210123588044
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4546730728331365549}
-  - component: {fileID: 5289191796005715114}
-  m_Layer: 0
-  m_Name: CINEMA_4D_Editor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4546730728331365549
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327153210123588044}
-  m_LocalRotation: {x: 0.010993023, y: -0.9879678, z: 0.08388845, w: 0.12946658}
-  m_LocalPosition: {x: 2.215598, y: 3.8496852, z: 9.571178}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &5289191796005715114
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327153210123588044}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
-  m_GateFitMode: 0
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 20.25}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 36
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.01
-  far clip plane: 100
-  field of view: 31.417276
-  orthographic: 0
-  orthographic size: 0.0028124999
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &5369528581557798314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,10 +1913,11 @@ GameObject:
   - component: {fileID: 4355139265205043577}
   - component: {fileID: 1693396450023214213}
   - component: {fileID: 1693396450023214214}
-  - component: {fileID: 1693396450023214215}
+  - component: {fileID: 2932581858414116887}
+  - component: {fileID: 7543633629882474263}
   m_Layer: 0
   m_Name: Luobojing
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2003,10 +1930,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7251299041091608080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.076624, y: 0.1, z: -3.3744946}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4546730728331365549}
   - {fileID: 8806173865139805215}
   - {fileID: 6124967206808718981}
   - {fileID: 8615721069663567308}
@@ -2063,7 +1989,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.323988, z: 0.92942834}
   m_Center: {x: 0, y: 1.1682425, z: 0.13968623}
---- !u!114 &1693396450023214215
+--- !u!114 &2932581858414116887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2072,27 +1998,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 7251299041091608080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a76ad070f7484d4998156c60ca55b21, type: 3}
+  m_Script: {fileID: 11500000, guid: 778c1cf4455dfe84b8302ae41aadd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehiclePosition: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  animator: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  mass: 2
-  speed: 2
-  health: 2
-  attack: 2
-  target: {fileID: 0}
-  enemyPrefab: {fileID: 0}
-  FOV: 0
-  attackRadius: 0
-  avoidRadius: 0
+  forward: {x: 0, y: 0, z: 0}
   wanderDestination: {x: 0, y: 0, z: 0}
   reached: 0
   wanderRadius: 7
-  wanderRadiusOffset: 2
-  wanderCooldown: 1.5
-  wanderCooldownOffset: 0.2
+  wanderRadiusOffset: 7
+  wanderCooldown: 2
+  wanderCooldownOffset: 3
+  mass: 1
+  maxSpeed: 5
+  FOV: 10
+  attackRadius: 3
+  hp: 2
+  attack: 2
+  target: {fileID: 0}
+--- !u!135 &7543633629882474263
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251299041091608080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7318680728927445833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,7 +2123,7 @@ Transform:
   m_Children:
   - {fileID: 2798235719145724461}
   m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8087712192796402010
 GameObject:
@@ -2363,7 +2302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5979254011209165827}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5083691457145989122
 SkinnedMeshRenderer:
