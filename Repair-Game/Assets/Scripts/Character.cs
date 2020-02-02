@@ -9,14 +9,17 @@ public class Character : MonoBehaviour
 
     // Enemy List
     private GameObject[] enemyList;
+    private GameObject target;
 
     // Magic Attack
+    public KeyCode magicAttackKey;
     public GameObject firePoint;
     public GameObject vfxMagic;
     [SerializeField] private float fireDelayTime;
     [SerializeField] private float fireRate;
     [SerializeField] private float timeToFire = 0;
     [SerializeField] [Range(0, 90)] private float shotAngleTolerance;
+    public bool canFire;
 
     // Singleton
     public static Character character;
@@ -26,6 +29,7 @@ public class Character : MonoBehaviour
     void Start()
     {
         character = this;
+        canFire = true;
     }
 
     // Update is called once per frame
@@ -35,11 +39,10 @@ public class Character : MonoBehaviour
         if (animator == null) animator = GetComponent<CharacterMovement>().animator;
         if (controller == null) controller = GetComponent<CharacterMovement>().controller;
         if (enemyList == null) enemyList = GameObject.FindGameObjectsWithTag("Enemy");
-        
 
-        if (Input.GetKey(KeyCode.Space) && Time.time >= timeToFire)
+        if (Input.GetKey(magicAttackKey) && canFire)
         {
-            timeToFire = Time.time + 1 / fireRate;
+            //timeToFire = Time.time + 1 / fireRate;
             StartCoroutine(MagicAttack());
         }
     }
@@ -49,13 +52,16 @@ public class Character : MonoBehaviour
     {
         if (firePoint != null)
         {
-            Debug.Log("Magic!!!");
+            canFire = false;
             animator.SetTrigger("magicAttack");
             yield return new WaitForSeconds(fireDelayTime);
             GameObject vfx = Instantiate(vfxMagic, firePoint.transform.position, GetCharacter().transform.rotation);
             
             // Set the target enemy for the spawned projectile
             vfx.GetComponent<ProjectileMove>().SetTargetEnemy = FindTargetEnemy();
+
+            yield return new WaitForSeconds(fireRate);
+            canFire = true;
         }
         else
         {
@@ -63,9 +69,17 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyBullet")
+        {
+            animator.SetTrigger("damaged");
+        }
+    }
+
     private GameObject FindTargetEnemy()
     {
-        GameObject target = null;
+        target = null;
         for (int i = 0; i < enemyList.Length; ++i)
         {
             GameObject currEnemy = enemyList[i];
@@ -88,5 +102,17 @@ public class Character : MonoBehaviour
     private float DistDiff(GameObject enemy)
     {
         return Vector3.Distance(enemy.transform.position, transform.position);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (target != null)
+            Gizmos.DrawLine(transform.position, target.transform.position);
+
+        // Draw tolerance angle
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -shotAngleTolerance / 2f, 0) * transform.forward * 50);
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, shotAngleTolerance / 2f, 0) * transform.forward * 50);
     }
 }
