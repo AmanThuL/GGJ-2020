@@ -159,7 +159,7 @@ public class Luobojing : Enemy
             }
 
             reached = true;
-            rb.velocity *= 0.2f; //Slow down
+            rb.velocity *= 0.3f; //Slow down
         }
 
         if (wanderTicker >= 0) wanderTicker -= Time.deltaTime;
