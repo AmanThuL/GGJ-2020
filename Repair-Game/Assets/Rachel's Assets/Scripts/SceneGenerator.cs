@@ -35,7 +35,16 @@ public class SceneGenerator : MonoBehaviour
         sceneArray = new ArrayList();
 
         // Add scenes here
-        sceneArray.Add("Rachel Test Scene");
+        sceneArray.Add("BasicRoomMs");
+        sceneArray.Add("BasicRoomP");
+        sceneArray.Add("Room_1Plants");
+        sceneArray.Add("Room_2Plants");
+        sceneArray.Add("Room_3Plants");
+        sceneArray.Add("Room_4Plant");
+        sceneArray.Add("Room_5Mar");
+        sceneArray.Add("Room_6Mar");
+        sceneArray.Add("Room_7Mar");
+        sceneArray.Add("Room_8Mar");
     }
 
     // Update is called once per frame
