@@ -9,4 +9,6 @@ public static class GameStats
     public static bool IsThereSofa = false;
 
     public static bool IsThereMug = false;
+
+    public static int Level = 1;
 }
