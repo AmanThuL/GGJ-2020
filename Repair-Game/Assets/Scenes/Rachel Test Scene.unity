@@ -303,6 +303,17 @@ PrefabInstance:
       propertyPath: fov
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4009797754636955752, guid: 3e2312a4300d3294a9b19bfac145f3c8,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4009797754636955752, guid: 3e2312a4300d3294a9b19bfac145f3c8,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 8875160353094889950, guid: 4083e177f6dc5e94c8ab6500473e4982,
+        type: 3}
     - target: {fileID: 5596517399239001059, guid: 3e2312a4300d3294a9b19bfac145f3c8,
         type: 3}
       propertyPath: m_IsTrigger
@@ -719,6 +730,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -381257234546540414, guid: 7293d11f76dab46439da32b67b3616b6,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 73272918128137619, guid: 7293d11f76dab46439da32b67b3616b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -778,6 +794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BoxMonster_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989917193859622784, guid: 7293d11f76dab46439da32b67b3616b6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7293d11f76dab46439da32b67b3616b6, type: 3}

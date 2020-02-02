@@ -21,7 +21,7 @@ public class Luobojing : Enemy
         state = State.Wander;
         gameObject.GetComponent<SphereCollider>().radius = fov;
         animator = gameObject.GetComponent<Animator>();
-        player = GameObject.Find("Character-girl");
+        player = GameObject.FindWithTag("Player");
         target = player;
         attackTicker += attackCooldown;
     }
@@ -107,14 +107,9 @@ public class Luobojing : Enemy
         attackTicker += attackCooldown;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        return;
-    }
-
     private void OnTriggerStay(Collider other)
     {
-        return;
+        attackTicker -= Time.fixedDeltaTime;
     }
 
     private void OnTriggerExit(Collider other)

@@ -11,15 +11,24 @@ public class Character : MonoBehaviour
     private GameObject[] enemyList;
     private GameObject target;
 
+    [SerializeField] [Range(0, 90)] private float shotAngleTolerance;
+
     // Magic Attack
+    [Header("Magic Attack")]
     public KeyCode magicAttackKey;
     public GameObject firePoint;
     public GameObject vfxMagic;
     [SerializeField] private float fireDelayTime;
     [SerializeField] private float fireRate;
-    [SerializeField] private float timeToFire = 0;
-    [SerializeField] [Range(0, 90)] private float shotAngleTolerance;
     public bool canFire;
+
+    // Magic Area Attack
+    [Header("Magic Area Attack")]
+    public KeyCode magicAreaAttackKey;
+    public GameObject orbFirePoint;
+    public GameObject vfxOrb;
+    [SerializeField] private float orbFireDelayTime;
+    [SerializeField] private float orbFireRate;
 
     // Singleton
     public static Character character;
@@ -45,18 +54,22 @@ public class Character : MonoBehaviour
             //timeToFire = Time.time + 1 / fireRate;
             StartCoroutine(MagicAttack());
         }
+        else if (Input.GetKey(magicAreaAttackKey) && canFire)
+        {
+            StartCoroutine(MagicAreaAttack());
+        }
     }
-
 
     private IEnumerator MagicAttack()
     {
         if (firePoint != null)
         {
             canFire = false;
+
             animator.SetTrigger("magicAttack");
             yield return new WaitForSeconds(fireDelayTime);
             GameObject vfx = Instantiate(vfxMagic, firePoint.transform.position, GetCharacter().transform.rotation);
-            
+
             // Set the target enemy for the spawned projectile
             vfx.GetComponent<ProjectileMove>().SetTargetEnemy = FindTargetEnemy();
 
@@ -66,6 +79,46 @@ public class Character : MonoBehaviour
         else
         {
             Debug.Log("No Fire Point!");
+        }
+    }
+
+    private IEnumerator MagicAreaAttack()
+    {
+        if (orbFirePoint != null)
+        {
+            canFire = false;
+
+            // Stop character movement
+            GetComponent<CharacterMovement>().ToggleInput(false);
+
+            animator.SetTrigger("magicAreaAttack");
+            GameObject orb = Instantiate(vfxOrb, orbFirePoint.transform.position, GetCharacter().transform.rotation);
+
+            yield return 0;
+
+            orb.GetComponent<ProjectileMove>().SetMovable(false);
+            yield return new WaitForSeconds(orbFireDelayTime);
+            orb.GetComponent<ProjectileMove>().SetMovable(true);
+            // Set the target enemy for the spawned projectile
+            orb.GetComponent<ProjectileMove>().SetTargetEnemy = FindTargetEnemy();
+            // Enable character movement
+            GetComponent<CharacterMovement>().ToggleInput(true);
+
+
+            yield return new WaitForSeconds(orbFireRate);
+            canFire = true;
+        }
+        else
+        {
+            Debug.Log("No Orb Fire Point!");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyBullet")
+        {
+            animator.SetTrigger("damaged");
         }
     }
 

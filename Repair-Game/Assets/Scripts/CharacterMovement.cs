@@ -23,6 +23,8 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private float gravityScale;
 
+    [SerializeField] private bool isInputEnabled;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
         moveSpeed = maxWalkSpeed;
 
         isRunning = false;
+        isInputEnabled = true;
     }
 
     // Update is called once per frame
@@ -41,8 +44,15 @@ public class CharacterMovement : MonoBehaviour
     {
         if (animator == null) return;
 
-        horMovement = Input.GetAxisRaw("Horizontal");
-        vertMovement = Input.GetAxisRaw("Vertical");
+        if (isInputEnabled)
+        {
+            horMovement = Input.GetAxisRaw("Horizontal");
+            vertMovement = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            horMovement = vertMovement = 0;
+        }
 
         // Control speed
         if (!IsThereMovementInput() && !isRunning) moveSpeed = 0;
@@ -106,5 +116,10 @@ public class CharacterMovement : MonoBehaviour
         if (IsThereMovementInput() && !isRunning)
             return true;
         return false;
+    }
+
+    public void ToggleInput(bool enabled)
+    {
+        isInputEnabled = enabled;
     }
 }

@@ -1052,9 +1052,10 @@ GameObject:
   m_Component:
   - component: {fileID: 73272918128137619}
   - component: {fileID: 8038453185322137833}
-  - component: {fileID: 4955986603591956406}
+  - component: {fileID: -7742199580893852236}
   - component: {fileID: -7638613128427103172}
   - component: {fileID: -381257234546540414}
+  - component: {fileID: 4955986603591956406}
   m_Layer: 0
   m_Name: BoxMonster_Idle
   m_TagString: Untagged
@@ -1099,19 +1100,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &4955986603591956406
-SphereCollider:
+--- !u!65 &-7742199580893852236
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989917193859622784}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2600732, y: 2.7277212, z: 1}
+  m_Center: {x: -0.017338276, y: 1.3319917, z: 0}
 --- !u!114 &-7638613128427103172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,6 +1143,8 @@ MonoBehaviour:
   hp: 2
   attack: 2
   state: 0
+  isAttacking: 0
+  floorSize: 0
 --- !u!54 &-381257234546540414
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1158,6 +1161,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &4955986603591956406
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989917193859622784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3992087351569470437
 GameObject:
   m_ObjectHideFlags: 0

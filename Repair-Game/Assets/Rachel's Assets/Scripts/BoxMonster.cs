@@ -50,4 +50,5 @@ public class BoxMonster : Enemy
     {
         // TODO
     }
+
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Repair-Game/Assets/Prefabs/Obstacle/MARMO LOD 0.5 Variant.prefab.meta
 guid: d3b9d42a4debb484d855ca52899bb5dd
+=======
+guid: 9a5d597cdb6ac4b4093b2f6e4e5a7e61
+>>>>>>> 1b32e5ab045bfd56687252c84ab0458173dc03a6:Repair-Game/Assets/Prefabs/VFX_Orb.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

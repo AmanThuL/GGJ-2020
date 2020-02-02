@@ -13,21 +13,26 @@ public class ProjectileMove : MonoBehaviour
 
     private float spawnY;
 
+    [SerializeField] private bool canMove;
+
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, destroyTime);
         
         spawnY = transform.position.y;
+
+        canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (speed != 0)
+        if (speed != 0 && canMove)
         {
             velocity = transform.forward * speed * Time.deltaTime;
             //transform.position += velocity * Time.deltaTime;
+            //transform.rotation = Random.rotation;
 
             if (targetEnemy != null)
             {
@@ -65,5 +70,10 @@ public class ProjectileMove : MonoBehaviour
     public void Seek(GameObject target)
     {
         velocity += Seek(target.transform.position);
+    }
+
+    public void SetMovable(bool value)
+    {
+        canMove = value;
     }
 }
