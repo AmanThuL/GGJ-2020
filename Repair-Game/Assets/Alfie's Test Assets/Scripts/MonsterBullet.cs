@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buuu : MonoBehaviour
+public class MonsterBullet : MonoBehaviour
 {
     public Vector3 direction;
     public float speed;

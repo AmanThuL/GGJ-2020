@@ -11,19 +11,23 @@ public class ExitAttackState : StateMachineBehaviour
     //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Luobojing2 lbj = animator.GetComponentInParent<Luobojing2>();
+
+        if (lbj.attackTicker <= 0)
+        {
+            lbj.Attack();
+        }
+        
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Luobojing lbj = animator.GetComponentInParent<Luobojing>();
-
-        lbj.Attack();
-
+        Luobojing2 lbj = animator.GetComponentInParent<Luobojing2>();
         lbj.SetWanderState();
+        lbj.isAttacking = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
