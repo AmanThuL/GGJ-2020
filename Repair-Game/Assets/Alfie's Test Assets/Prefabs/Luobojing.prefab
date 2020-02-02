@@ -1943,7 +1943,6 @@ GameObject:
   - component: {fileID: 4355139265205043577}
   - component: {fileID: 1693396450023214213}
   - component: {fileID: 1693396450023214214}
-  - component: {fileID: -3368919539774450729}
   - component: {fileID: -7532001473553164305}
   - component: {fileID: -6917035608890365732}
   m_Layer: 0
@@ -2021,43 +2020,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.323988, z: 0.92942834}
   m_Center: {x: 0, y: 1.1682425, z: 0.13968623}
---- !u!114 &-3368919539774450729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7251299041091608080}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6a8341c58110c4c9787e9fe2fa60fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  acceleration: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  forward: {x: 0, y: 0, z: 0}
-  wanderDestination: {x: 0, y: 0, z: 0}
-  reached: 0
-  wanderRadius: 10
-  wanderRadiusOffset: 2
-  wanderCooldown: 5
-  wanderCooldownOffset: 1
-  mass: 0
-  maxSpeed: 5
-  fov: 15
-  attackRadius: 0
-  hp: 0
-  attack: 0
-  state: 0
-  isAttacking: 0
-  floorSize: 0
-  animator: {fileID: 0}
-  player: {fileID: 0}
-  attackTicker: 0
-  attackCooldown: 4
-  bullet: {fileID: 8875160353094889950, guid: 4083e177f6dc5e94c8ab6500473e4982, type: 3}
 --- !u!114 &-7532001473553164305
 MonoBehaviour:
   m_ObjectHideFlags: 0
