@@ -3897,7 +3897,7 @@ Transform:
   - {fileID: 1728722708}
   - {fileID: 1052857826}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &917687610
 PrefabInstance:
@@ -6227,6 +6227,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 5.9, z: 2}
   m_Center: {x: 0, y: -1, z: 0}
+--- !u!1001 &1668337696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.48661
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24959975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.931886
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472121502, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515135793472288446, guid: d3b9d42a4debb484d855ca52899bb5dd,
+        type: 3}
+      propertyPath: m_Name
+      value: MARMO LOD 0.5 Variant (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3b9d42a4debb484d855ca52899bb5dd, type: 3}
 --- !u!1001 &1687245677
 PrefabInstance:
   m_ObjectHideFlags: 0
