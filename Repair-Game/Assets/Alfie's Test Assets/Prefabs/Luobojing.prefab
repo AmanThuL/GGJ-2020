@@ -1943,8 +1943,8 @@ GameObject:
   - component: {fileID: 4355139265205043577}
   - component: {fileID: 1693396450023214213}
   - component: {fileID: 1693396450023214214}
-  - component: {fileID: -7532001473553164305}
   - component: {fileID: -6917035608890365732}
+  - component: {fileID: 3185739831606554135}
   m_Layer: 0
   m_Name: Luobojing
   m_TagString: Enemy
@@ -2020,7 +2020,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.323988, z: 0.92942834}
   m_Center: {x: 0, y: 1.1682425, z: 0.13968623}
---- !u!114 &-7532001473553164305
+--- !u!135 &-6917035608890365732
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251299041091608080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3185739831606554135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2039,37 +2052,24 @@ MonoBehaviour:
   forward: {x: 0, y: 0, z: 0}
   wanderDestination: {x: 0, y: 0, z: 0}
   reached: 0
-  wanderRadius: 10
-  wanderRadiusOffset: 2
+  wanderRadius: 7
+  wanderRadiusOffset: 1
   wanderCooldown: 5
   wanderCooldownOffset: 1
-  mass: 0
+  mass: 1
   maxSpeed: 5
   fov: 15
-  attackRadius: 0
-  hp: 0
-  attack: 0
+  attackRadius: 5
+  hp: 10
+  attack: 10
   state: 0
   isAttacking: 0
   floorSize: 0
   animator: {fileID: 0}
-  player: {fileID: 4783692375313534052, guid: 0e9f8ad007d218143b9f0113ab9483a5, type: 3}
+  player: {fileID: 0}
   attackTicker: 0
   attackCooldown: 4
   bullet: {fileID: 8875160353094889950, guid: 4083e177f6dc5e94c8ab6500473e4982, type: 3}
---- !u!135 &-6917035608890365732
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7251299041091608080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7318680728927445833
 GameObject:
   m_ObjectHideFlags: 0
