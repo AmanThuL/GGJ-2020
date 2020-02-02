@@ -12,7 +12,7 @@ public class buuu : MonoBehaviour
     void Start()
     {
         //direction = new Vector3(1, 0, 0);
-        speed = 5;
+        speed = 10;
     }
 
     // Update is called once per frame
@@ -20,5 +20,6 @@ public class buuu : MonoBehaviour
     {
         velocity = direction * speed;
         transform.position += velocity * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x,1.5f,transform.position.z);
     }
 }

@@ -10,11 +10,12 @@ public class Luobojing : EnemyPhysics
         wander,
         attack
     }
+
     state currentState;
     public Animator animator;
     private GameObject player;
 
-    private float attackTicker;
+    public float attackTicker;
     public float attackCooldown;
 
     public GameObject bullet;
@@ -53,31 +54,28 @@ public class Luobojing : EnemyPhysics
             transform.forward = rb.velocity.normalized;
 
             //If player in range and not in cooldown, attack
-            if(Vector3.Distance(player.transform.position, rb.position) < 20f && attackTicker <= 0 && rb.velocity.magnitude < 0.3f)
+            if(Vector3.Distance(player.transform.position, rb.position) < 20f && attackTicker <= 0 && reached)
             {
                 wanderRadius = 4;
                 currentState = state.attack;
             }
             
             attackTicker -= Time.fixedDeltaTime;
-            Debug.Log(attackTicker);
         }
 
         if(currentState == state.attack)
         {
-            Debug.Log("attack");
             rb.velocity = Vector3.zero;
+
             Debug.DrawLine(gameObject.transform.position, player.transform.position, Color.yellow);
-            //transform.forward = (player.transform.position - gameObject.transform.position).normalized;
+
+            rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.05f;
             animator.SetTrigger("Attack");
-            //StartCoroutine(Attack1());
-
-            Attack();
-
+            
             attackTicker = 0;
             attackTicker += attackCooldown;
 
-            currentState = state.wander;
+            //currentState = state.wander;
         }
     }
 
@@ -89,6 +87,17 @@ public class Luobojing : EnemyPhysics
 
     private IEnumerator Attack1()
     {
-        yield return new WaitForSeconds(0.5f);  
+        yield return new WaitForSeconds(2f);
+        
+    }
+
+    public void SetAttackState()
+    {
+        currentState = state.attack;
+    }
+
+    public void SetWanderState()
+    {
+        currentState = state.wander;
     }
 }

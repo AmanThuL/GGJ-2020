@@ -51,7 +51,7 @@ public abstract class EnemyPhysics : MonoBehaviour
 
         //position = transform.position;
         
-        Debug.DrawLine(position, wanderDestination, Color.yellow);
+        Debug.DrawLine(transform.position, wanderDestination, Color.yellow);
 
         // New stuff for this (and the next) unit
         //transform.forward = rb.velocity.normalized;
@@ -104,7 +104,7 @@ public abstract class EnemyPhysics : MonoBehaviour
     //pos: the target position
     public void RigidGoTo(Vector3 pos)
     {
-        rb.AddForce((pos - rb.position) * 0.05f, ForceMode.VelocityChange);
+        rb.AddForce((pos - rb.position) * 0.03f, ForceMode.VelocityChange);
     }
 
     //<Helper function>
