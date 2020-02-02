@@ -104,7 +104,6 @@ public class Character : MonoBehaviour
             // Enable character movement
             GetComponent<CharacterMovement>().ToggleInput(true);
 
-
             yield return new WaitForSeconds(orbFireRate);
             canFire = true;
         }
