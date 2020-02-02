@@ -2001,7 +2001,7 @@ Rigidbody:
   m_GameObject: {fileID: 7251299041091608080}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 2.5
+  m_Drag: 3
   m_AngularDrag: 0.2
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -2053,13 +2053,13 @@ MonoBehaviour:
   forward: {x: 0, y: 0, z: 0}
   wanderDestination: {x: 0, y: 0, z: 0}
   reached: 0
-  wanderRadius: 8
+  wanderRadius: 5
   wanderRadiusOffset: 2
-  wanderCooldown: 3
+  wanderCooldown: 2
   wanderCooldownOffset: 1
   mass: 1
-  maxSpeed: 7
-  fov: 20
+  maxSpeed: 5
+  fov: 10
   attackRadius: 5
   hp: 10
   attack: 5
