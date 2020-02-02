@@ -38,6 +38,8 @@ public class SceneFader : MonoBehaviour
             yield return 0; // Skip to the next frame
         }
 
+        Time.timeScale = 1;
+
         gameObject.SetActive(false);
     }
 
@@ -52,6 +54,8 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0; // Skip to the next frame
         }
+
+        if (!gameObject.activeSelf) gameObject.SetActive(true);
 
         // Load the scene
         SceneManager.LoadScene(scene);

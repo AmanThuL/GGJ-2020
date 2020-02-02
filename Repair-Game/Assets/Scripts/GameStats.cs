@@ -11,7 +11,7 @@ public static class GameStats
     public static bool IsThereMug = false;
 
     // HP
-    public static int Health = 30;
+    public static int Health = 5;
     public static int MaxHealth = 30;
 
     public static int Level = 1;
