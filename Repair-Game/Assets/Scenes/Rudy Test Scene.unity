@@ -473,6 +473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_magic
       objectReference: {fileID: 0}
+    - target: {fileID: 3307533495691835481, guid: ff24787c3a2ff1c4ea42f5daab3069cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3307533495691835482, guid: ff24787c3a2ff1c4ea42f5daab3069cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2080790057867751678, guid: a61e769ccb938744380473e528838ae7,
+        type: 3}
+      propertyPath: shotAngleTolerance
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 4783692375313534052, guid: a61e769ccb938744380473e528838ae7,
         type: 3}
       propertyPath: m_Name
