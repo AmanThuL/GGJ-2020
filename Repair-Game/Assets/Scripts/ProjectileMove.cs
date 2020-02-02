@@ -61,11 +61,11 @@ public class ProjectileMove : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.collider.tag != "player")
-        {
-            speed = 0;
-            Destroy(gameObject);
-        }
+        //if (collision.collider.tag != "player")
+        //{
+        //    speed = 0;
+        //    Destroy(gameObject);
+        //}
 
 
     }

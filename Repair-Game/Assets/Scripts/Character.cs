@@ -75,6 +75,9 @@ public class Character : MonoBehaviour
     {
         if (firePoint != null)
         {
+
+            refillEnemyList();
+
             canFire = false;
 
             animator.SetTrigger("magicAttack");
@@ -187,5 +190,10 @@ public class Character : MonoBehaviour
 
         // Update UI
         healthUI.fillAmount = (float)GameStats.Health / (float)GameStats.MaxHealth;
+    }
+
+    public void refillEnemyList()
+    {
+        enemyList = GameObject.FindGameObjectsWithTag("Enemy");
     }
 }
