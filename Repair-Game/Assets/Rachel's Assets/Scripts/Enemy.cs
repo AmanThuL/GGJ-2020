@@ -96,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public abstract void Attack();
+    // public abstract void Attack();
 
     //Author: Yuan Luo
     //Add force to rigidbody towards the target position
