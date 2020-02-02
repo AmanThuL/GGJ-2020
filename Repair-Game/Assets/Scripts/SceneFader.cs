@@ -9,6 +9,9 @@ public class SceneFader : MonoBehaviour
     public Image img;
     public AnimationCurve curve;
 
+    [SerializeField] private float fadeInTime;
+    [SerializeField] private float fadeOutTime;
+
     private void Start()
     {
         StartCoroutine(FadeIn());
@@ -25,7 +28,7 @@ public class SceneFader : MonoBehaviour
 
     IEnumerator FadeIn()
     {
-        float t = 1f;
+        float t = fadeInTime;
 
         while (t > 0f) // Keep animating until t reaches 0
         {
@@ -38,9 +41,9 @@ public class SceneFader : MonoBehaviour
 
     IEnumerator FadeOut(string scene)
     {
-        float t = 0f;
+        float t = 0;
 
-        while (t < 1f) // Keep animating until t reaches 0
+        while (t < fadeOutTime) // Keep animating until t reaches 0
         {
             t += Time.deltaTime;
             float a = curve.Evaluate(t);

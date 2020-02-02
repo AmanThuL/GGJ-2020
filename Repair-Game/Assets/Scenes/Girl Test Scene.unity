@@ -751,11 +751,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1339723866945492028, guid: 98de73ab70a57f140b0b5d699792f250,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1504146049628831444, guid: 98de73ab70a57f140b0b5d699792f250,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -883,6 +878,21 @@ PrefabInstance:
     - target: {fileID: 5371269469552813374, guid: 88c9a0bbedb838640a1d82759538212f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371269469552813375, guid: 88c9a0bbedb838640a1d82759538212f,
+        type: 3}
+      propertyPath: fadeInTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371269469552813375, guid: 88c9a0bbedb838640a1d82759538212f,
+        type: 3}
+      propertyPath: fadeOutTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371269469699517701, guid: 88c9a0bbedb838640a1d82759538212f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
