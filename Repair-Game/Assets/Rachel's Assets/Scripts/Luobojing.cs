@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Author: Yuan Luo
-public class Luobojing2 : Enemy
+public class Luobojing : Enemy
 {
     public Animator animator;
 
@@ -29,18 +29,23 @@ public class Luobojing2 : Enemy
     // Update is called once per frame
     void Update()
     {
+        
         base.Update();
         animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
+
     }
 
-    protected void FixedUpdate()
+    void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SetDeadState();
+        }
         switch (state)
         {
             case State.Wander:
                 Wandering();
 
-                animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
                 transform.forward = rb.velocity.normalized;
 
                 //If player in range and not in cooldown, attack
@@ -61,8 +66,15 @@ public class Luobojing2 : Enemy
 
                 rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.03f;
 
+                transform.forward = rb.velocity.normalized;
+
                 if (attackTicker <= 0 && !isAttacking)
                 {
+
+                    rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.05f;
+
+                    transform.forward = rb.velocity.normalized;
+
                     isAttacking = true;
                     animator.SetTrigger("Attack");
                 }
@@ -76,10 +88,11 @@ public class Luobojing2 : Enemy
                 break;
             case State.Dead:
                 // Insert dead animation
+                animator.SetTrigger("Death");
                 gameObject.SetActive(false);
                 break;
         }
-        animator.SetFloat("Velocity", rb.velocity.magnitude / maxSpeed);
+
         transform.forward = rb.velocity.normalized;
     }
 

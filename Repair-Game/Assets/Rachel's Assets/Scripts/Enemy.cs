@@ -15,7 +15,6 @@ public abstract class Enemy : MonoBehaviour
 
     public Rigidbody rb;
 
-    private Vector3 position;
     public Vector3 acceleration;
     public Vector3 direction;
     public Vector3 velocity;
@@ -50,7 +49,6 @@ public abstract class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        position = transform.position;
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -145,6 +143,11 @@ public abstract class Enemy : MonoBehaviour
     public void Seek(GameObject target)
     {
         RigidGoTo(target.transform.position);
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 
     protected void OnTriggerEnter(Collider other)

@@ -17,7 +17,7 @@ public class ProjectileMove : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, destroyTime);
-        targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        
         spawnY = transform.position.y;
     }
 

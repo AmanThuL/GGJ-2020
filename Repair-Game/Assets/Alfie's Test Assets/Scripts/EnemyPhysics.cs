@@ -48,9 +48,6 @@ public abstract class EnemyPhysics : MonoBehaviour
 
         wanderDestination = GetRandomClosePosition(wanderRadius + Random.Range(-wanderRadiusOffset, wanderRadiusOffset));
         wanderTicker = 0;
-
-        
-
 }
 
 // Update is called once per frame
