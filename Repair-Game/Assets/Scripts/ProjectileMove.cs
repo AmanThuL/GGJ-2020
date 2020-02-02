@@ -13,6 +13,8 @@ public class ProjectileMove : MonoBehaviour
 
     private float spawnY;
 
+    public int damage;
+
     [SerializeField] private bool canMove;
 
     // Start is called before the first frame update
@@ -50,11 +52,22 @@ public class ProjectileMove : MonoBehaviour
     // Bullet doesn't when colliding with player
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            GameObject obj = collision.gameObject;
+            obj.GetComponent<Rigidbody>().AddForce(transform.position - obj.transform.position);
+            obj.GetComponent<Enemy>().ReceiveDamage(damage);
+
+            Destroy(gameObject);
+        }
+
         if (collision.collider.tag != "player")
         {
             speed = 0;
             Destroy(gameObject);
         }
+
+
     }
 
     private Vector3 Seek(Vector3 targetPosition)
