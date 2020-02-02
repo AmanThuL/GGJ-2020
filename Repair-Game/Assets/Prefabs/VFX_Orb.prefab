@@ -4818,6 +4818,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   destroyTime: 7
   targetEnemy: {fileID: 0}
+  damage: 10
+  canMove: 0
 --- !u!1 &857571923631998352
 GameObject:
   m_ObjectHideFlags: 0

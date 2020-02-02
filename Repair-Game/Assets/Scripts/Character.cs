@@ -127,11 +127,14 @@ public class Character : MonoBehaviour
         for (int i = 0; i < enemyList.Length; ++i)
         {
             GameObject currEnemy = enemyList[i];
-            float angleDiff = AngleDiff(currEnemy);
-            if (angleDiff < shotAngleTolerance / 2f)
+            if (currEnemy != null && currEnemy.GetComponent<Enemy>().state != Enemy.State.Dead)
             {
-                if (target == null || DistDiff(currEnemy) < DistDiff(target))
-                    target = currEnemy;
+                float angleDiff = AngleDiff(currEnemy);
+                if (angleDiff < shotAngleTolerance / 2f)
+                {
+                    if (target == null || DistDiff(currEnemy) < DistDiff(target))
+                        target = currEnemy;
+                }
             }
         }
         return target;
