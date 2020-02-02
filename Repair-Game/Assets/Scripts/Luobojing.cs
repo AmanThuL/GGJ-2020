@@ -24,7 +24,7 @@ public class Luobojing : EnemyPhysics
     void Start()
     {
         base.Start();
-        animator = gameObject.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         player = GameObject.Find("Character-girl");
         Debug.Log(player.transform.position.x);
