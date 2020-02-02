@@ -13,7 +13,7 @@ public class Luobojing : EnemyPhysics
 
     state currentState;
     public Animator animator;
-    private GameObject player;
+    [SerializeField] private GameObject player;
 
     public float attackTicker;
     public float attackCooldown;
