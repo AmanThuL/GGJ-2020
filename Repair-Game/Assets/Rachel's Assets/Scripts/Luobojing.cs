@@ -13,8 +13,10 @@ public class Luobojing : Enemy
     public float attackCooldown;
 
     public GameObject bullet;
+    public GameObject coin;
 
     public ParticleSystem[] particleSystems;
+
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +112,6 @@ public class Luobojing : Enemy
                     if (!part.isPlaying)
                     {
                         part.Play();
-
                     }
                         
                 }

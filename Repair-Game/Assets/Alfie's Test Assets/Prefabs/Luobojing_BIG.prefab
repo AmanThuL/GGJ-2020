@@ -2065,12 +2065,14 @@ MonoBehaviour:
   attack: 15
   state: 0
   isAttacking: 0
+  avgLoot: 6
   floorSize: 0
   animator: {fileID: 0}
   player: {fileID: 0}
   attackTicker: 0
   attackCooldown: 5
   bullet: {fileID: 8875160353094889950, guid: 4083e177f6dc5e94c8ab6500473e4982, type: 3}
+  coin: {fileID: 1622309955470637845, guid: 738ad84fa9622ec4994011450761ab08, type: 3}
   particleSystems:
   - {fileID: 5068626139239339669}
   - {fileID: 5068626137919237268}
