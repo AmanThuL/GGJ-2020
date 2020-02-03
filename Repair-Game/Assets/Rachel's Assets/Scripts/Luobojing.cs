@@ -70,14 +70,14 @@ public class Luobojing : Enemy
 
                 Debug.DrawLine(gameObject.transform.position, player.transform.position, Color.yellow);
 
-                rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.03f;
+                rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.005f;
 
                 transform.forward = rb.velocity.normalized;
 
                 if (attackTicker <= 0 && !isAttacking)
                 {
 
-                    rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.05f;
+                    rb.velocity = (player.transform.position - gameObject.transform.position).normalized * 0.005f;
 
                     transform.forward = rb.velocity.normalized;
 
@@ -150,7 +150,7 @@ public class Luobojing : Enemy
         }
 
         //If reached
-        if (Vector3.Distance(wanderDestination, rb.position) < 1f && !reached)
+        if (Vector3.Distance(wanderDestination, rb.position) < 1.3f && !reached)
         {
             //if just reached, start cooldown
             if (reached == false)

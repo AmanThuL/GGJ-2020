@@ -1197,6 +1197,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostProcessManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6563942738395881382, guid: dd70acb2703aefb4d83820157ec57735,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6563942738395881383, guid: dd70acb2703aefb4d83820157ec57735,
         type: 3}
       propertyPath: m_LocalPosition.x
