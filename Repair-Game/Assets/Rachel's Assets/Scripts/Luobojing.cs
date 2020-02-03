@@ -25,8 +25,7 @@ public class Luobojing : Enemy
         state = State.Wander;
         gameObject.GetComponent<SphereCollider>().radius = fov;
         animator = gameObject.GetComponent<Animator>();
-        player = GameObject.FindWithTag("Player");
-        target = player;
+        player = SceneGenerator.player;
         attackTicker += attackCooldown;
     }
 
@@ -42,10 +41,6 @@ public class Luobojing : Enemy
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            SetDeadState();
-        }
         switch (state)
         {
             case State.Wander:
@@ -58,7 +53,6 @@ public class Luobojing : Enemy
                 //If player in range and not in cooldown, attack
                 if (Vector3.Distance(player.transform.position, rb.position) < fov && attackTicker <= 0 && reached)
                 {
-
                     wanderRadius = 6;
                     state = State.Attack;
                 }
@@ -119,12 +113,6 @@ public class Luobojing : Enemy
         }
 
         //transform.forward = rb.velocity.normalized;
-    }
-
-    private IEnumerator Die()
-    {
-        yield return 0;
-        animator.SetTrigger("IsDead");
     }
 
     public override void Attack()

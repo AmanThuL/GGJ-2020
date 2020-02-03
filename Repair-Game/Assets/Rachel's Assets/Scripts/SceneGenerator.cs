@@ -8,9 +8,10 @@ public class SceneGenerator : MonoBehaviour
     public static SceneGenerator sceneGenerator;
 
     private int randomIndex;
-    private ArrayList sceneArray;
-    public GameObject playerRef;
-    public GameObject player;
+    private ArrayList roomArray;
+    private ArrayList tRoomArray;
+    public GameObject playerPrefab;
+    public static GameObject player;
 
     public Vector3 spawnPos;
 
@@ -26,33 +27,32 @@ public class SceneGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(playerRef.name);
-
         spawnPos = new Vector3(25, 0.5f, 0);
 
-        sceneArray = new ArrayList();
+        roomArray = new ArrayList();
+        tRoomArray = new ArrayList();
         if (player == null)
         {
-            player = Instantiate(playerRef, spawnPos, Quaternion.identity);
+            player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
             DontDestroyOnLoad(player);
         }
 
         // Add scenes here
-        sceneArray.Add("sofaR");
-        sceneArray.Add("Starbuk");
-        sceneArray.Add("waterman");
-        //sceneArray.Add("BasicRoomMs");
-        //sceneArray.Add("BasicRoomP");
-        sceneArray.Add("Room_1Plants");
-        sceneArray.Add("Room_2Plants");
-        sceneArray.Add("Room_3Plants");
-        sceneArray.Add("Room_4Plant");
-        sceneArray.Add("Room_5Mar");
-        sceneArray.Add("Room_6Mar");
-        sceneArray.Add("Room_7Mar");
-        sceneArray.Add("Room_8Mar");
-        sceneArray.Add("Room_9Rock1");
-        sceneArray.Add("Room_10Rock");
+        tRoomArray.Add("sofaR");
+        tRoomArray.Add("Starbuk");
+        tRoomArray.Add("waterman");
+        //roomArray.Add("BasicRoomMs");
+        //roomArray.Add("BasicRoomP");
+        roomArray.Add("Room_1Plants");
+        roomArray.Add("Room_2Plants");
+        roomArray.Add("Room_3Plants");
+        roomArray.Add("Room_4Plant");
+        roomArray.Add("Room_5Mar");
+        roomArray.Add("Room_6Mar");
+        roomArray.Add("Room_7Mar");
+        roomArray.Add("Room_8Mar");
+        roomArray.Add("Room_9Rock1");
+        roomArray.Add("Room_10Rock");
     }
 
     // Update is called once per frame
@@ -64,26 +64,43 @@ public class SceneGenerator : MonoBehaviour
     public void LoadNewScene()
     {
         // Remove current scene from the list
-        sceneArray.Remove(SceneManager.GetActiveScene().name);
+        roomArray.Remove(SceneManager.GetActiveScene().name);
 
-        if (sceneArray.Count > 0)
+        // Load treasure rooms after every four levels
+        if(GameStats.Level % 4 == 0)
         {
-            randomIndex = Random.Range(0, sceneArray.Count);
-            string newSceneName = (string)sceneArray[randomIndex];
+            LoadNewScene(tRoomArray);
+        }
+        else
+        {
+            LoadNewScene(roomArray);
+        }
+
+        Debug.Log(GameStats.Level);
+
+        if (!player.active)
+        {
+            player.SetActive(true);
+        }
+    }
+
+    public void LoadNewScene(ArrayList rooms)
+    {
+        if (rooms.Count > 0)
+        {
+            randomIndex = Random.Range(0, rooms.Count);
+            string newSceneName = (string)rooms[randomIndex];
             SceneManager.LoadScene(newSceneName, LoadSceneMode.Single); // LoadSceneMode.Single = close previous scene, load new scene | LoadSceneMode.Additive = load scene over old scene
             DelayedExecution(1f, newSceneName);
-            //SceneManager.MoveGameObjectToScene(playerRef, SceneManager.GetSceneByName(newSceneName));
-            
-            sceneArray.RemoveAt(randomIndex); // Removing scene from the array ensures it gets loaded only once
+            //SceneManager.MoveGameObjectToScene(playerPrefab, SceneManager.GetSceneByName(newSceneName));
+
+            rooms.RemoveAt(randomIndex); // Removing scene from the array ensures it gets loaded only once
+
+            GameStats.Level++;
         }
         else
         {
             Debug.Log("No more scenes to load!");
-        }
-
-        if(!player.active)
-        {
-            player.SetActive(true);
         }
     }
 

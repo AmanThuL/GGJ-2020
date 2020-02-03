@@ -37,6 +37,11 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0; // Skip to the next frame
         }
+
+        Time.timeScale = 1;
+
+        if (SceneManager.GetActiveScene().name != "GameT")
+            gameObject.SetActive(false);
     }
 
     IEnumerator FadeOut(string scene)
@@ -50,6 +55,8 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0; // Skip to the next frame
         }
+
+        gameObject.SetActive(true);
 
         // Load the scene
         SceneManager.LoadScene(scene);
